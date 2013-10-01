@@ -22,8 +22,18 @@ feature 'user signs up', %Q{
   #   an error message that I must reenter criteria
 
   scenario 'user enters valid criteria for sign up' do
+    user = FactoryGirl.create(:user)
+    previous_count = User.count
 
+    visit new_user_registration_path
+    fill_in 'Username', with: user.username
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
+    fill_in 'Confirm password', with: user.password_confirmation
+    click_button 'Sign up!'
 
+    expect(page).to have_content('Welcome to Gleanery! You have successfully signed up.')
+    expect(User.count).to eql(previous_count + 1)
   end
 
   scenario 'user does not enter valid criteria for sign up' do
