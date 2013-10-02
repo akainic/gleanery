@@ -28,7 +28,7 @@ feature 'user signs up', %Q{
     visit new_user_registration_path
     fill_in 'Username', with: user.username
     fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
+    fill_in 'Set password', with: user.password
     fill_in 'Confirm password', with: user.password_confirmation
     click_button 'Sign up!'
 
