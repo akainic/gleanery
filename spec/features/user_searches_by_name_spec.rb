@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'user searches for restaurant', %Q{
+feature 'user searches for restaurant by name', %Q{
   As a registered or unregistered user
   I want to be able to search for a restaurant by name
   So that I can see the restaurant's profile and ratings
@@ -18,8 +18,25 @@ feature 'user searches for restaurant', %Q{
   # * If I do not enter a restaurant name, I will receive 
   #   an error message that I must enter some search criteria
 
-  
+  scenario 'user enters valid restaurant name' do
+    restaurant = FactoryGirl.create(:restaurant)
 
+    visit restaurants_path
+    save_and_open_page
+    fill_in :q_name_cont, with: restaurant.name
+    click_button 'Search'
 
+    expect(page).to have_content('1 search result found')
+    expect(page).to have_content('Life Alive')
+    expect(path).to eql(restaurants_path)
+  end
+
+  scenario 'user does not enter valid restaurant name' do
+
+  end
+
+  scenario 'user enters valid restaurant name and no results are found' do
+
+  end
 
 end
