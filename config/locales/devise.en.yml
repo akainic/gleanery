@@ -43,7 +43,7 @@ en:
       updated: "You updated your account successfully."
     sessions:
       signed_in: "Welcome back to Gleanery! You have signed in successfully."
-      signed_out: "You have signed out successfully."
+      signed_out: "See you again soon! You have signed out successfully."
     unlocks:
       send_instructions: "You will receive an email with instructions about how to unlock your account in a few minutes."
       send_paranoid_instructions: "If your account exists, you will receive an email with instructions about how to unlock it in a few minutes."

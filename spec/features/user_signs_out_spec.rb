@@ -16,8 +16,12 @@ feature 'user signs out', %Q{
   scenario 'user signs out of current session' do
     user = FactoryGirl.create(:user)
 
-    sign_in_user(user)
+    sign_in_as(user)
 
+    click_on 'Sign out'
+
+    expect(page).to have_content('See you again soon! You have signed out successfully.')
+    expect(current_path).to eql(root_path)
   end  
 
 
