@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<%= link_to 'Back', restaurants_path %>
+
+<div>
+  <%= @restaurant.name %><br>
+</div>
+
+<div>
+  <% if user_signed_in? %>
+
+    <% form_for [@restaurant, @comment] do |f| %>
+
+      <%= f.label :comment %>
+      <%= f.text_field :comment %>
+      <%= f.submit 'Post comment' %>
+
+    <% end %>
+
+  <% else %>
+
+    <ul>
+      <li><% link_to 'Sign in', new_user_session_path %>to comment</li>
+      <li>Not yet registered with Gleanery?<% link_to 'Sign up', new_user_registration_path%></li>
+    </ul>
+
+  <% end %>
+</div>

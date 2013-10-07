@@ -1,11 +1,7 @@
 Gleanery::Application.routes.draw do
-  
+
   resources :restaurants do
-    resources :ratings do
-      member do
-        get "friendly"
-        get "unfriendly"
-      end
+    resources :comments do
     end
   end
 

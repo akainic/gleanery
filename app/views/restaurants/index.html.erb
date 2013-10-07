@@ -4,6 +4,5 @@
   <%= f.submit 'Search' %>
 <% end %>
 
-<% if @restaurants.count > 0 %>
-  <%= pluralize(@restaurants.count, 'restaurant found') %>
-<% end %>
+<%= "#{pluralize(@restaurants.count, 'restaurant')} found" %>
+

@@ -28,7 +28,7 @@ class RestaurantsController < ApplicationController
 
   def record_rating(value,diet)
     if user_signed_in?
-      rating = @restaurant.ratings.find_or_initialize_by(user_id: current_user_id)
+      rating = @restaurant.ratings.find_or_initialize_by(user_id: current_user.id)
       rating.diet = value
       rating.save
     end

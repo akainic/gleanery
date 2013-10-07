@@ -7,6 +7,10 @@ class Restaurant < ActiveRecord::Base
   has_many :ratings,
     inverse_of: :restaurant,
     dependent: :nullify
+
+  has_many :comments,
+    inverse_of: :restaurant,
+    dependent: :nullify
   
   def rating(diet)
     self.ratings.inject(0) { | sum, v| sum + v.diet }
