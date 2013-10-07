@@ -7,7 +7,7 @@ class RestaurantsController < ApplicationController
   end
 
   def show
-    @restaurant = Restaurant.find(params[:id])
+    @comment = @restaurant.comments.build
   end
 
   def friendly(diet)

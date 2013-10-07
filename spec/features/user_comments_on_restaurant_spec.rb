@@ -30,8 +30,7 @@ feature 'user comments on a restaurant', %Q{
 
     sign_in_as(user)
 
-    visit restaurant_path(restaurant.id)
-
+    visit restaurant_path(restaurant)
     fill_in 'Comment', with: 'This restaurant has great vegan options'
     click_button 'Post comment'
 
