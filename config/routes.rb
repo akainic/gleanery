@@ -1,6 +1,13 @@
 Gleanery::Application.routes.draw do
   
-  resources :restaurants
+  resources :restaurants do
+    resources :ratings do
+      member do
+        get "friendly"
+        get "unfriendly"
+      end
+    end
+  end
 
   devise_for :users
   

@@ -22,11 +22,10 @@ feature 'user searches for restaurant by name', %Q{
     restaurant = FactoryGirl.create(:restaurant)
 
     visit restaurants_path
-    save_and_open_page
     fill_in :q_name_cont, with: restaurant.name
     click_button 'Search'
 
-    expect(page).to have_content('1 search result found')
+    expect(page).to have_content('1 restaurant found')
     expect(page).to have_content('Life Alive')
     expect(path).to eql(restaurants_path)
   end

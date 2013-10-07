@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+require 'csv'
+
+CSV.foreach('db/restaurant_data.csv', { :headers => true} ) do |row|
+  restaurant = Restaurant.find_or_create_by(name: row[0])
+  restaurant.neighborhood = row[1]
+  restaurant.street_address = row[2]
+  restaurant.city = row[3]
+end

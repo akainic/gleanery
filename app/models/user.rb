@@ -13,4 +13,8 @@ class User < ActiveRecord::Base
   validates_format_of :password,
     with: /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,128}/
 
+  has_many :ratings,
+    inverse_of: :user,
+    dependent: :nullify
+
 end
