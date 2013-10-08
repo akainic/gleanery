@@ -1,6 +1,9 @@
 Gleanery::Application.routes.draw do
-  
-  resources :restaurants
+
+  resources :restaurants do
+    resources :comments do
+    end
+  end
 
   devise_for :users
   

@@ -20,7 +20,7 @@ en:
     #     edit:
     #       email: 'E-mail.'
     # hints:
-    #   defaults:
+      # defaults:
     #     username: 'User name to sign in.'
     #     password: 'No special characters, please.'
 

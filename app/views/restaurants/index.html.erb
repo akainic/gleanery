@@ -3,3 +3,6 @@
   <%= f.text_field :name_cont %>
   <%= f.submit 'Search' %>
 <% end %>
+
+<%= "#{pluralize(@restaurants.count, 'restaurant')} found" %>
+
