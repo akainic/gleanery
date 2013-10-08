@@ -11,9 +11,12 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to restaurant_path(@restaurant),
         notice: "Comment successfully posted"
+    elsif @comment.comment.length < 5
+      redirect_to restaurant_path(@restaurant),
+        notice: "Your comment was not posted. Comments must be at least 5 characters long."
     else
       redirect_to restaurant_path(@restaurant),
-        notice: "Your comment was not posted"
+        notice: "Your comment was not posted."
     end
   end
 

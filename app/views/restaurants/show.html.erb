@@ -1,20 +1,29 @@
-<p id="notice"><%= notice %></p>
-
 <%= link_to 'Back', restaurants_path %>
 
-<div>
+<div><br>
   <%= @restaurant.name %><br>
+  <%= @restaurant.neighborhood %><br>
 </div>
 
 <div>
   <% if user_signed_in? %>
-    
-    <%= form_for [@restaurant, @comment] do |f| %>
-      
-      <%= f.label :comment %>
-      <%= f.text_field :comment %>
-      <%= f.submit 'Post comment' %>
 
+    <%= simple_form_for [@restaurant, @comment] do |f| %>
+      <fieldset>
+
+        <legend>Post comment</legend>
+
+        <%= f.error_notification %>
+
+        <div class="form-inputs">
+          <%= f.input :comment, :required => true, :autofocus => true %>
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit, 'Submit' %>
+        </div>
+
+      </fieldset>
     <% end %>
 
   <% else %>
@@ -30,7 +39,7 @@
 
     <div>
       <ul>
-        <li><%= comment.user_id %></li>  
+        <li><%= comment.user_id %></li>
         <li><%= comment.comment %></li>
       </ul>
     </div>
