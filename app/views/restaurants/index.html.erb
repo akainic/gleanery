@@ -1,0 +1,8 @@
+<%= search_form_for @q do |f| %>
+  <%= f.label 'Find a restaurant' %>
+  <%= f.text_field :name_cont %>
+  <%= f.submit 'Search' %>
+<% end %>
+
+<%= "#{pluralize(@restaurants.count, 'restaurant')} found" %>
+

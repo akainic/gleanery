@@ -24,6 +24,4 @@ feature 'user signs out', %Q{
     expect(current_path).to eql(root_path)
   end  
 
-
-  
 end

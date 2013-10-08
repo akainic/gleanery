@@ -1,5 +1,10 @@
 Gleanery::Application.routes.draw do
-  
+
+  resources :restaurants do
+    resources :comments do
+    end
+  end
+
   devise_for :users
   
   # The priority is based upon order of creation: first created -> highest priority.

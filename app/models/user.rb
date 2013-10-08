@@ -17,6 +17,14 @@ class User < ActiveRecord::Base
   validates_format_of :password,
     with: /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,128}/
 
+  has_many :ratings,
+    inverse_of: :user,
+    dependent: :nullify
+
+  has_many :comments,
+    inverse_of: :user,
+    dependent: :nullify
+
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
