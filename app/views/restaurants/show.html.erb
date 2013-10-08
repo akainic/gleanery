@@ -34,15 +34,22 @@
     </ul>
 
   <% end %>
+</div>
+
+<div>
 
   <% @restaurant.comments.each do |comment| %>
 
-    <div>
-      <ul>
-        <li><%= comment.user_id %></li>
-        <li><%= comment.comment %></li>
-      </ul>
-    </div>
+      <div class="row">
+        <ul class="comments_header">
+          <li><%= comment.user_id %></li>
+          <li>|</li>
+          <li><%= comment.updated_at %></li>
+        </ul>
+        <ul class="comments_content">
+          <li><%= comment.comment %></li>
+        </ul>
+      </div>
 
   <% end %>
 </div>
