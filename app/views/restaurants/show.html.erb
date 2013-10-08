@@ -20,8 +20,8 @@
   <% else %>
 
     <ul>
-      <li><% link_to 'Sign in', new_user_session_path %>to comment</li>
-      <li>Not yet registered with Gleanery?<% link_to 'Sign up', new_user_registration_path%></li>
+      <li><%= link_to 'Sign in', new_user_session_path %> to comment</li>
+      <li>Not yet registered with Gleanery?<%= link_to 'Sign up', new_user_registration_path%></li>
     </ul>
 
   <% end %>
@@ -30,7 +30,7 @@
 
     <div>
       <ul>
-        <li><%= comment.user_id %></li>
+        <li><%= comment.user_id %></li>  
         <li><%= comment.comment %></li>
       </ul>
     </div>
