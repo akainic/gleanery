@@ -55,4 +55,11 @@ feature 'user comments on a restaurant', %Q{
     expect(Comment.count).to eql(previous_count)
   end
 
+  scenario 'user attempts to post comment without signing in' do
+    restaurant = FactoryGirl.create(:restaurant)
+
+    visit restaurant_path(restaurant)
+
+    expect(page).to_not have_content('Post comment')
+  end
 end
