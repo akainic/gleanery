@@ -1,0 +1,48 @@
+<%= link_to 'Back', restaurants_path %>
+
+<div><br>
+  <%= @restaurant.name %><br>
+  <%= @restaurant.neighborhood %><br>
+</div><br>
+
+<div>
+  <% if user_signed_in? %>
+
+    <%= simple_form_for [@restaurant, @comment] do |f| %>
+      <fieldset>
+
+        <legend>Post comment</legend>
+
+        <%= f.error_notification %>
+
+        <div class="form-inputs">
+          <%= f.input :comment, :required => true, :autofocus => true %>
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit, 'Submit' %>
+        </div>
+
+      </fieldset>
+    <% end %>
+
+  <% else %>
+
+    <ul>
+      <li><%= link_to 'Sign in', new_user_session_path %> to comment</li>
+      <li>Not yet registered with Gleanery? <%= link_to 'Sign up', new_user_registration_path%></li>
+    </ul>
+
+  <% end %>
+
+  <% @restaurant.comments.each do |comment| %>
+
+    <div>
+      <ul>
+        <li><%= comment.user_id %></li>
+        <li><%= comment.comment %></li>
+      </ul>
+    </div>
+
+  <% end %>
+</div>

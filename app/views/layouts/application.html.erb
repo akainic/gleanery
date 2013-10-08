@@ -1,28 +1,59 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Gleanery</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7 ]> <html class="ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie9" lang="en"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+  <head>
+  	<meta charset="utf-8" />
 
-<nav>
-  <ul>
-    <% if user_signed_in? %>
-      <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
-    <% else %>
-      <li><%= link_to 'Sign up', new_user_registration_path %></li>
-      <li><%= link_to 'Sign in', new_user_session_path %></li>
-    <% end %>
-  </ul>
-</nav>
+  	<!-- Uncomment to make IE8 render like IE7 -->
+  	<!-- <meta http-equiv="X-UA-Compatible" content="IE=7" /> -->
 
-<%= yield %>
+  	<!-- Set the viewport width to device width for mobile -->
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+  	<title><%= content_for?(:title) ? yield(:title) : "Gleanery" %></title>
 
-</body>
+  	<%= stylesheet_link_tag    "application" %>
+  	<%= javascript_include_tag "vendor/custom.modernizr" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+
+  <nav class="top-bar">
+    <ul class="title-area">
+      <li class="name">
+        <h1><a href="/">Gleanery</a></h1>
+      </li>
+      <li class="toggle-topbar menu-icon">
+        <a href="#"><span>Menu</span></a>
+      </li>
+    </ul>
+
+    <section class="top-bar-section">
+      <ul class="right">
+        <% if user_signed_in? %>
+          <li class="authentication-link"><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li class="authentication-link"><%= link_to 'Sign up', new_user_registration_path %></li>
+          <li class="authentication-link"><%= link_to 'Sign in', new_user_session_path %></li>
+        <% end %>
+      </ul>
+    </section>
+
+  </nav>
+
+
+    <% flash.each do |name, msg| -%>
+      <div class="<%= name %>"><%= msg %></div>
+    <% end -%>
+
+    <%= yield %>
+
+
+    <%= javascript_include_tag "application" %>
+  </body>
 </html>
