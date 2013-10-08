@@ -1,8 +1,29 @@
-<%= search_form_for @q do |f| %>
-  <%= f.label 'Find a restaurant' %>
-  <%= f.text_field :name_cont %>
-  <%= f.submit 'Search' %>
+<%= simple_form_for @q, :url => restaurants_path, :html => { :method => :get } do |f| %>
+  <fieldset>
+    <legend>Find a restaurant</legend>
+
+    <div>
+      <%= f.label 'Restaurant name' %>
+      <%= f.text_field :name_cont, :class => 'text_field', :autofocus => true %>
+    </div>
+
+    <div>
+      <%= f.button :submit, 'Search' %>
+    </div>
+
+  </fieldset>
 <% end %>
 
-<%= "#{pluralize(@restaurants.count, 'restaurant')} found" %>
+<div>
+  <%= "#{pluralize(@restaurants.count, 'restaurant')} found" %>
+</div>
+
+<div>
+  <% @restaurants.each do |restaurant| %>
+    <ul>
+      <li><%= link_to "#{restaurant.name}", restaurant_path(restaurant) %></li>
+      <li><%= restaurant.neighborhood %></li>
+    </ul>
+  <% end %>
+</div>
 
