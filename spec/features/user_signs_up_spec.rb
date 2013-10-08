@@ -31,6 +31,7 @@ feature 'user signs up', %Q{
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password, :match => :prefer_exact
     fill_in 'Password confirmation', with: user.password_confirmation, :match => :prefer_exact
+    
     click_button 'Sign up'
 
     expect(page).to have_content('Welcome to Gleanery! You have signed up successfully.')
