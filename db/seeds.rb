@@ -9,8 +9,6 @@
 require 'csv'
 
 CSV.foreach('db/restaurant_data.csv', { :headers => true} ) do |row|
-  restaurant = Restaurant.find_or_create_by(name: row[0])
-  restaurant.neighborhood = row[1]
-  restaurant.street_address = row[2]
-  restaurant.city = row[3]
+  restaurant_hash = { name: row[0], neighborhood: row[1], street_address: row[2], city: row[3] }
+  Restaurant.create!(restaurant_hash) unless Restaurant.where(restaurant_hash).any?
 end
