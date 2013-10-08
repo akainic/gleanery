@@ -28,11 +28,11 @@ feature 'user signs in', %Q{
 
     visit root_path
     click_on 'Sign in'
-    fill_in 'Email', with: user.email
+    fill_in 'Login', with: user.email
     fill_in 'Password', with: 'Greens100'
     click_button 'Sign in' 
-
-    expect(page).to have_content('Invalid email or password') 
+    
+    expect(page).to have_content('Invalid login or password') 
     expect(current_path).to eql(new_user_session_path)
   end
 
