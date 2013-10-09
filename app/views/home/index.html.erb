@@ -1,9 +1,14 @@
 <%= simple_form_for @q, :url => restaurants_path, :html => { :method => :get } do |f| %>
   <fieldset>
     <legend>Find a restaurant</legend>
-    <%= f.label 'Restaurant name' %>
-    <%= f.text_field :name_cont, :class => 'text_field', :autofocus => true %>
-    <%= f.button :submit, 'Search' %>
+
+    <div class="row">
+      <div>
+        <%= f.label 'Restaurant name' %>
+        <%= f.text_field :name_cont, :class => 'text_field', :autofocus => true %>
+        <%= f.button :submit, 'Search' %>
+      </div>
+    </div>
   </fieldset>
 <% end %>
 

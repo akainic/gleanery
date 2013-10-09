@@ -2,21 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.top-bar {
-  padding: 20px;
-
-  .authentication-link {
-    margin: 0;
-    padding: 0;
-  }
+body {
+  background-color: white;
 }
 
-// .nice_new_user a {
-
-// }
-
-// #user_rememeber_me {
-//   margin-right: 5px;
-// }
-
-
+fieldset {
+  background-color: white;
+}

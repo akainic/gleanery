@@ -1,13 +1,13 @@
 <ul class="breadcrumbs">
   <li><a href="/">Home</a></li>
-  <li><a href="/restaurants">Restaurants</li>
-  <li class="current"><%= @restaurant.name %></li>
+  <li><a href="/restaurants">Restaurants</a></li>
+  <li class="current"><a href="#"><%= @restaurant.name %></a></li>
 </ul>
 
-
-<%= @restaurant.name %>
-<%= @restaurant.neighborhood %>
-
+<div>
+  <%= @restaurant.name %>
+  <%= @restaurant.neighborhood %>
+</div>
 
 <div>
   <% if user_signed_in? %>
