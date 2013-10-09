@@ -1,9 +1,13 @@
-<%= link_to 'Back', restaurants_path %>
+<ul class="breadcrumbs">
+  <li><a href="/">Home</a></li>
+  <li><a href="/restaurants">Restaurants</li>
+  <li class="current"><%= @restaurant.name %></li>
+</ul>
 
-<div><br>
-  <%= @restaurant.name %><br>
-  <%= @restaurant.neighborhood %><br>
-</div><br>
+
+<%= @restaurant.name %>
+<%= @restaurant.neighborhood %>
+
 
 <div>
   <% if user_signed_in? %>
