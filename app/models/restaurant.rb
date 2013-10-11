@@ -11,9 +11,17 @@ class Restaurant < ActiveRecord::Base
   has_many :comments,
     inverse_of: :restaurant,
     dependent: :nullify
-  
-  def rating(diet)
-    self.ratings.inject(0) { | sum, v| sum + v.diet }
+
+  def vegan_rating
+    ratings.where(vegan: 1).count - ratings.where(vegan: 0).count
+  end
+
+  def vegetarian_rating
+    ratings.where(vegetarian: 1).count - ratings.where(vegetarian: 0).count
+  end
+
+  def gluten_free_rating
+    ratings.where(gluten_free: 1).count - ratings.where(gluten_free: 0).count
   end
 
 end

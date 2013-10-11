@@ -3,9 +3,39 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 body {
-  background-color: white;
+  background-image: url('/app/assets/images/yellowgreentomatoescopy.jpg');
 }
 
 fieldset {
   background-color: white;
 }
+
+.home_search {
+  margin: 30px;
+}
+
+.search_button {
+  padding-top: 10px;
+}
+
+.search_label {
+  padding-bottom: 10px;
+}
+
+.devise_links {
+  margin: 30px;
+}
+
+.current_user {
+  background-color: white;
+  padding: 0 33.33333px;
+  line-height: 100px;
+  font-size: 0.8125em;
+  font-weight: bold;
+  color: black;
+}
+
+.mycheckbox input[type="checkbox"] {
+  margin-right: 5px;
+}
+

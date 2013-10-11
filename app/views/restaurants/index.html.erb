@@ -4,16 +4,16 @@
 </ul>
 
 <%= simple_form_for @q, :url => restaurants_path, :html => { :method => :get } do |f| %>
-  <fieldset>
-    <legend>Find a restaurant</legend>
+  <fieldset class="home_search">
 
-    <div>
-      <%= f.label 'Restaurant name' %>
-      <%= f.text_field :name_cont, :class => 'text_field', :autofocus => true %>
+    <div class="home_search">
+      <h5>Find a restaurant</h5>
     </div>
 
-    <div>
-      <%= f.button :submit, 'Search' %>
+    <div class="home_search">
+      <div class="left inline"><%= f.label 'Restaurant name', label_html: { class: 'search_label' } %></div>
+      <div><%= f.text_field :name_cont, :class => 'text_field', :autofocus => true %></div>
+      <div class="search_button"><%= f.button :submit, 'Search' %></div>
     </div>
 
   </fieldset>

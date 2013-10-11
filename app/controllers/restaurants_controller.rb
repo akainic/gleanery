@@ -8,29 +8,13 @@ class RestaurantsController < ApplicationController
 
   def show
     @comment = @restaurant.comments.build
-  end
-
-  def friendly(diet)
-    record_rating(1,diet)
-    redirect_to @restaurant
-  end
-
-  def unfriendly(diet)
-    record_rating(0,diet)
-    redirect_to @restaurant
+    if user_signed_in?
+    @rating = @restaurant.ratings.find_or_initialize_by(user: current_user)
   end
 
   private
 
   def set_restaurant
     @restaurant = Restaurant.find(params[:id])
-  end
-
-  def record_rating(value,diet)
-    if user_signed_in?
-      rating = @restaurant.ratings.find_or_initialize_by(user_id: current_user.id)
-      rating.diet = value
-      rating.save
-    end
   end
 end

@@ -4,10 +4,22 @@
   <li class="current"><a href="#"><%= @restaurant.name %></a></li>
 </ul>
 
+
+
+
+<% #button_to 'Upvote', restaurant_upvotes_path(@restaurant, diet: 'vegan'), method: :post %>
+<!-- # above POSTS to /restaurants/<id>/upvotes?diet=vegan -->
 <div>
   <%= @restaurant.name %>
   <%= @restaurant.neighborhood %>
 </div>
+
+<%= simple_form_for [@restaurant, @rating] do |f| %>
+  <%= @restaurant.vegan_rating %>
+  <%= f.input :vegan, as: :radio_buttons, collection: [['Vegan friendly', 1], ['Not vegan friendly', 0]]  %>
+  <%= f.button :submit, 'Rate' %>
+<% end %>
+
 
 <div>
   <% if user_signed_in? %>
