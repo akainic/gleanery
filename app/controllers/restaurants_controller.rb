@@ -9,7 +9,8 @@ class RestaurantsController < ApplicationController
   def show
     @comment = @restaurant.comments.build
     if user_signed_in?
-    @rating = @restaurant.ratings.find_or_initialize_by(user: current_user)
+      @rating = @restaurant.ratings.find_or_initialize_by(user: current_user)
+    end
   end
 
   private
