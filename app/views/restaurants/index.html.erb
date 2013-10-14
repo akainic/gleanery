@@ -4,7 +4,7 @@
 </ul>
 
 <%= simple_form_for @q, :url => restaurants_path, :html => { :method => :get } do |f| %>
-  <fieldset class="home_search">
+  <fieldset class="search_field">
 
     <div class="home_search">
       <h5>Find a restaurant</h5>
@@ -19,11 +19,11 @@
   </fieldset>
 <% end %>
 
-<div>
+<div class="search_results">
   <%= "#{pluralize(@restaurants.count, 'restaurant')} found" %>
 </div>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Restaurant</th>
@@ -39,9 +39,9 @@
       <tr>
         <td><%= link_to "#{restaurant.name}", restaurant_path(restaurant) %></td>
         <td><%= restaurant.neighborhood %></td>
-        <td>Rating</td>
-        <td>Rating</td>
-        <td>Rating</td>
+        <td><%= restaurant.vegan_rating %></td>
+        <td><%= restaurant.vegetarian_rating %></td>
+        <td><%= restaurant.gluten_free_rating %></td>
       </tr>
     <% end %>
   </tbody>

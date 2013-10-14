@@ -6,12 +6,21 @@ body {
   background-image: url('/app/assets/images/yellowgreentomatoescopy.jpg');
 }
 
+.notice {
+  margin-left: 33.33333px;
+  color: #68B516;
+}
+
 fieldset {
   background-color: white;
 }
 
-.home_search {
+.search_field {
   margin: 30px;
+}
+
+.home_search {
+  margin: 10px;
 }
 
 .search_button {
@@ -19,6 +28,7 @@ fieldset {
 }
 
 .search_label {
+  padding-top: 10px;
   padding-bottom: 10px;
 }
 
@@ -37,5 +47,22 @@ fieldset {
 
 .mycheckbox input[type="checkbox"] {
   margin-right: 5px;
+}
+
+.search_results {
+  margin-left: 30px;
+  font-style: italic;
+}
+
+.table {
+  margin: 10px 30px;
+}
+
+.restaurant_info {
+  margin: 0px 30px;
+
+  ul {
+    list-style: none;
+  }
 }
 

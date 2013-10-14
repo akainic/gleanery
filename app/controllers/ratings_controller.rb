@@ -16,7 +16,7 @@ class RatingsController < ApplicationController
     @rating = @restaurant.ratings.where(user: current_user).find(params[:id])
     if @rating.update(rating_params)
       redirect_to restaurant_path(@restaurant)
-     else
+    else
       redirect_to restaurant_path(@restaurant),
         notice: "Your vote was not saved"
     end
@@ -31,6 +31,5 @@ class RatingsController < ApplicationController
   def rating_params
     params.require(:rating).permit(:vegan, :vegetarian, :gluten_free)
   end
-
 
 end

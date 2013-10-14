@@ -4,44 +4,49 @@
   <li class="current"><a href="#"><%= @restaurant.name %></a></li>
 </ul>
 
-<div>
-  <%= @restaurant.name %>
-  <%= @restaurant.neighborhood %>
+<div class="restaurant_info">
+  <ul>
+    <li><%= @restaurant.name %></li>
+    <li><%= @restaurant.neighborhood %></li>
+  </ul>
 </div>
 
-<%= simple_form_for [@restaurant, @rating] do |f| %>
-  <%= @restaurant.vegan_rating %>
-  <%= f.input :vegan, as: :radio_buttons, collection: [['Vegan friendly', 1], ['Not vegan friendly', 0]]  %>
-
-  <%= @restaurant.vegetarian_rating %>
-  <%= f.input :vegetarian, as: :radio_buttons, collection: [['Vegetarian friendly', 1], ['Not vegetarian friendly', 0]]  %>
-
-  <%= @restaurant.gluten_free_rating %>
-  <%= f.input :gluten_free, as: :radio_buttons, collection: [['Gluten-free friendly', 1], ['Not gluten-free friendly', 0]]  %>
-
-  <%= f.button :submit, 'Rate' %>
-
-<% end %>
-
+<div class="row">
+  <%= simple_form_for [@restaurant, @rating] do |f| %>
+    <div class="small-4 large-3 columns">
+    <%= @restaurant.vegan_rating %>
+    <%= f.input :vegan, as: :radio_buttons, collection: [['Vegan friendly', 1], ['Not vegan friendly', 0]]  %>
+    </div>
+    <div class="small-4 large-3 columns">
+    <%= @restaurant.vegetarian_rating %>
+    <%= f.input :vegetarian, as: :radio_buttons, collection: [['Vegetarian friendly', 1], ['Not vegetarian friendly', 0]]  %>
+    </div>
+    <div class="small-4 large-3 columns">
+    <%= @restaurant.gluten_free_rating %>
+    <%= f.input :gluten_free, as: :radio_buttons, collection: [['Gluten-free friendly', 1], ['Not gluten-free friendly', 0]]  %>
+    </div>
+    <div class="large-2 columns">
+    <%= f.button :submit, 'Rate' %>
+    </div>
+  <% end %>
+</div>
 
 <div>
   <% if user_signed_in? %>
-
     <%= simple_form_for [@restaurant, @comment] do |f| %>
       <fieldset>
-
-        <legend>Post comment</legend>
-
+        <div class="home_search">
+          <h5>Post comment</h5>
+        </div>
         <%= f.error_notification %>
 
-        <div class="form-inputs">
+        <div class="home_search">
           <%= f.input :comment, :required => true, :autofocus => true %>
         </div>
 
-        <div class="form-actions">
+        <div class="home_search">
           <%= f.button :submit, 'Submit' %>
         </div>
-
       </fieldset>
     <% end %>
 
@@ -55,20 +60,17 @@
   <% end %>
 </div>
 
-<div>
-
+<div class="row">
   <% @restaurant.comments.each do |comment| %>
-
-      <div class="row">
-        <ul class="comments_header">
-          <li><%= comment.user_id %></li>
-          <li>|</li>
-          <li><%= comment.updated_at %></li>
-        </ul>
-        <ul class="comments_content">
-          <li><%= comment.comment %></li>
-        </ul>
-      </div>
-
+    <% unless comment.user == nil %>
+      <ul class="comments_header">
+        <li><%= comment.user.username %></li>
+        <li>|</li>
+        <li><%= comment.updated_at %></li>
+      </ul>
+      <ul class="comments_content">
+        <li><%= comment.comment %></li>
+      </ul>
+    <% end %>
   <% end %>
 </div>
