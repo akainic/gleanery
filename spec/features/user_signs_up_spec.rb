@@ -50,34 +50,18 @@ feature 'user signs up', %Q{
     expect(User.count).to eql(previous_count)
   end
 
-  scenario 'user enters an email that is already registered' do
+  scenario 'user enters an email or username that is already registered' do
     user1 = FactoryGirl.create(:user)
     user2 = FactoryGirl.build(:user)
     previous_count = User.count
 
     visit root_path
     click_on 'Sign up'
-    fill_in 'Username', with: 'Swisschard99'
-    fill_in 'Email', with: user2.email
-    fill_in 'Password', with: user2.password, :match => :prefer_exact
-    fill_in 'Password confirmation', with: user2.password_confirmation, :match => :prefer_exact
-    click_button 'Sign up'
-    save_and_open_page
-    expect(page).to have_content('has already been taken')
-    expect(User.count).to eql(previous_count)
-  end
+    fill_in 'Username', with: user1.username
+    fill_in 'Email', with: user1.email
+    fill_in 'Password', with: user1.password, :match => :prefer_exact
+    fill_in 'Password confirmation', with: user1.password_confirmation, :match => :prefer_exact
 
-  scenario 'user enters a username that is already registered' do
-    user1 = FactoryGirl.create(:user)
-    user2 = FactoryGirl.build(:user)
-    previous_count = User.count
-
-    visit root_path
-    click_on 'Sign up'
-    fill_in 'Username', with: user2.username
-    fill_in 'Email', with: 'swisschard@example.com'
-    fill_in 'Password', with: user2.password, :match => :prefer_exact
-    fill_in 'Password confirmation', with: user2.password_confirmation, :match => :prefer_exact
     click_button 'Sign up'
 
     expect(page).to have_content('has already been taken')

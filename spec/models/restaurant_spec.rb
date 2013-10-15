@@ -15,12 +15,12 @@ describe Restaurant do
 
     let(:restaurant) { FactoryGirl.create(:restaurant) }
 
-    it 'sums all of the vegan ratings for the restaurant' do
+    it 'calculates all of the vegan ratings for the restaurant' do
       FactoryGirl.create(:rating, vegan: 1, restaurant: restaurant)
       FactoryGirl.create(:rating, vegan: 1, restaurant: restaurant)
       FactoryGirl.create(:rating, vegan: 0, restaurant: restaurant)
 
-      expect(restaurant.vegan_rating).to eql(1)
+      expect(restaurant.vegan_rating).to eql(67)
     end
   end
 
