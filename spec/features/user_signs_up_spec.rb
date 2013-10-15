@@ -4,7 +4,7 @@ feature 'user signs up', %Q{
   As an unregistered user
   I want to sign up for Gleanery
   So that I can create a profile and manage my preferences.
-} do 
+} do
 
   # Acceptance Criteria:
   #
@@ -31,10 +31,10 @@ feature 'user signs up', %Q{
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password, :match => :prefer_exact
     fill_in 'Password confirmation', with: user.password_confirmation, :match => :prefer_exact
-    
+
     click_button 'Sign up'
 
-    expect(page).to have_content('Welcome to Gleanery! You have signed up successfully.')
+    expect(page).to have_content('Welcome to Gleanery!')
     expect(User.count).to eql(previous_count + 1)
   end
 
@@ -62,7 +62,7 @@ feature 'user signs up', %Q{
     fill_in 'Password', with: user2.password, :match => :prefer_exact
     fill_in 'Password confirmation', with: user2.password_confirmation, :match => :prefer_exact
     click_button 'Sign up'
-
+    save_and_open_page
     expect(page).to have_content('has already been taken')
     expect(User.count).to eql(previous_count)
   end
@@ -84,7 +84,7 @@ feature 'user signs up', %Q{
     expect(User.count).to eql(previous_count)
   end
 
-  scenario 'user password and confirmation do not match' do 
+  scenario 'user password and confirmation do not match' do
     user = FactoryGirl.build(:user)
     previous_count = User.count
 

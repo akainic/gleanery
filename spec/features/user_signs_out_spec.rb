@@ -10,7 +10,7 @@ feature 'user signs out', %Q{
   #
   # * I must first be signed in
   # * If I click on the sign out button, my session
-  #   will be ended and I will be redirected to 
+  #   will be ended and I will be redirected to
   #   the home page
 
   scenario 'user signs out of current session' do
@@ -20,8 +20,8 @@ feature 'user signs out', %Q{
 
     click_on 'Sign out'
 
-    expect(page).to have_content('See you again soon! You have signed out successfully.')
+    expect(page).to have_content('Thanks for using Gleanery. See you again soon!')
     expect(current_path).to eql(root_path)
-  end  
+  end
 
 end
