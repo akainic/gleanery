@@ -1,48 +1,93 @@
-<%= link_to 'Back', restaurants_path %>
+<ul class="breadcrumbs">
+  <li><a href="/">Home</a></li>
+  <li><a href="/restaurants">Restaurants</a></li>
+  <li class="current"><a href="#"><%= @restaurant.name %></a></li>
+</ul>
 
-<div><br>
-  <%= @restaurant.name %><br>
-  <%= @restaurant.neighborhood %><br>
-</div><br>
+<div class="restaurant_info">
+  <div class="restaurant_name"><%= @restaurant.name %></div>
+  <div class="restaurant_neighborhood"><%= @restaurant.neighborhood %></div>
+</div>
 
-<div>
+<div class="row">
+  <div class="small-4 large-3 columns">
+    <div class="diet_label">Vegan friendly?</div>
+    <div class="rating"><%= @restaurant.vegan_rating %>%</div>
+  </div>
+  <div class="small-4 large-3 columns">
+    <div class="diet_label">Vegetarian friendly?</div>
+    <div class="rating"><%= @restaurant.vegetarian_rating %>%</div>
+  </div>
+  <div class="small-4 large-3 columns">
+    <div class="diet_label">Gluten-free friendly?</div>
+    <div class="rating"><%= @restaurant.gluten_free_rating %>%</div>
+  </div>
+  <div class="large-3 columns"> </div>
+</div>
+
+<div class="row">
+  <div class="small-6 large-6 columns rate_restaurant">Rate this restaurant:</div>
+</div>
+
+<div class="row">
   <% if user_signed_in? %>
+    <%= simple_form_for [@restaurant, @rating] do |f| %>
+      <div class="small-4 large-3 columns">
+        <%= f.input :vegan, as: :radio_buttons, collection: [['Yes', 1], ['No', 0]] %>
+      </div>
+      <div class="small-4 large-3 columns">
+        <%= f.input :vegetarian, as: :radio_buttons, collection: [['Yes', 1], ['No', 0]]  %>
+      </div>
+      <div class="small-4 large-3 columns">
+        <%= f.input :gluten_free, as: :radio_buttons, collection: [['Yes', 1], ['No', 0]]  %>
+      </div>
+      <div class="large-2 columns">
+        <%= f.button :submit, 'Rate' %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
 
+<div class="row">
+  <% if user_signed_in? %>
     <%= simple_form_for [@restaurant, @comment] do |f| %>
       <fieldset>
-
-        <legend>Post comment</legend>
-
+        <div class="home_search">
+          <h5>Post comment</h5>
+        </div>
         <%= f.error_notification %>
 
-        <div class="form-inputs">
+        <div class="home_search">
           <%= f.input :comment, :required => true, :autofocus => true %>
         </div>
 
-        <div class="form-actions">
+        <div class="home_search">
           <%= f.button :submit, 'Submit' %>
         </div>
-
       </fieldset>
     <% end %>
 
   <% else %>
 
     <ul>
-      <li><%= link_to 'Sign in', new_user_session_path %> to comment</li>
+      <li><%= link_to 'Sign in', new_user_session_path %> to rate and comment</li>
       <li>Not yet registered with Gleanery? <%= link_to 'Sign up', new_user_registration_path%></li>
     </ul>
 
   <% end %>
+</div>
 
+<div class="row">
   <% @restaurant.comments.each do |comment| %>
-
-    <div>
-      <ul>
-        <li><%= comment.user_id %></li>
+    <% unless comment.user == nil %>
+      <ul class="comments_header">
+        <li><%= comment.user.username %></li>
+        <li>|</li>
+        <li><%= comment.updated_at %></li>
+      </ul>
+      <ul class="comments_content">
         <li><%= comment.comment %></li>
       </ul>
-    </div>
-
+    <% end %>
   <% end %>
 </div>

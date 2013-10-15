@@ -2,19 +2,67 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.top-bar {
-  padding: 20px;
+body {
+  background-image: url('/app/assets/images/yellowgreentomatoescopy.jpg');
+}
 
-  .authentication-link {
-    margin: 0;
-    padding: 0;
+.notice {
+  margin-left: 33.33333px;
+  color: #68B516;
+}
+
+fieldset {
+  background-color: white;
+}
+
+.search_field {
+  margin: 30px;
+}
+
+.home_search {
+  margin: 10px;
+}
+
+.search_button {
+  padding-top: 10px;
+}
+
+.search_label {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.devise_links {
+  margin: 30px;
+}
+
+.current_user {
+  background-color: white;
+  padding: 0 33.33333px;
+  line-height: 100px;
+  font-size: 0.8125em;
+  font-weight: bold;
+  color: black;
+}
+
+.mycheckbox input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+.search_results {
+  margin-left: 30px;
+  font-style: italic;
+}
+
+.table {
+  margin: 10px 30px;
+}
+
+.restaurant_info {
+  margin: 0px 30px;
+
+  ul {
+    list-style: none;
   }
 }
 
-.nice_new_user a {
-
-}
-
-#user_rememeber_me {
-  margin-right: 5px;
-}

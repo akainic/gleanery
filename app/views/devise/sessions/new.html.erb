@@ -1,23 +1,32 @@
+<ul class="breadcrumbs">
+  <li><a href="/">Home</a></li>
+  <li class="current"><a href="/sign_in">Sign In</a></li>
+</ul>
+
+<div class="row">
 <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
 
-  <fieldset>
+  <fieldset class="search_field">
 
-    <legend>Sign in</legend>
+      <div class="home_search">
+        <h5>Sign in</h5>
+      </div>
 
     <%= f.error_notification %>
 
-    <div class="form-inputs">
-      <%= f.input :login, :required => false, :autofocus => true %>
-      <%= f.input :password, :required => false %>
-      <%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %>
-    </div>
-
-    <div class="form-actions">
-      <%= f.button :submit, "Sign in" %>
+    <div class="home_search">
+      <div class="search_label"><%= f.label :login %></div>
+      <div><%= f.text_field :login, :required => false, :autofocus => true %></div>
+      <div><%= f.input :password, :required => false, label_html: { class: 'search_label' } %></div>
+      <div class="mycheckbox"><%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %></div>
+      <div class="search_button"><%= f.button :submit, "Sign in" %></div>
     </div>
 
   </fieldset>
 
 <% end %>
+</div>
 
-<%= render "devise/shared/links" %>
+<div class="devise_links">
+  <%= render "devise/shared/links" %>
+</div>
