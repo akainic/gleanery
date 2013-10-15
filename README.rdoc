@@ -4,4 +4,3 @@ Diets included are:
 - Vegan
 - Vegetarian
 - Gluten-free
-
