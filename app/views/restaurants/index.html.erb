@@ -1,8 +1,49 @@
-<%= search_form_for @q do |f| %>
-  <%= f.label 'Find a restaurant' %>
-  <%= f.text_field :name_cont %>
-  <%= f.submit 'Search' %>
+<ul class="breadcrumbs">
+  <li><a href="/">Home</a></li>
+  <li class="current"><a href="/restaurants">Restaurants</a></li>
+</ul>
+
+<%= simple_form_for @q, :url => restaurants_path, :html => { :method => :get } do |f| %>
+  <fieldset class="search_field">
+
+    <div class="home_search">
+      <h5>Find a restaurant</h5>
+    </div>
+
+    <div class="home_search">
+      <div class="left inline"><%= f.label 'Restaurant name', label_html: { class: 'search_label' } %></div>
+      <div><%= f.text_field :name_cont, :class => 'text_field', :autofocus => true %></div>
+      <div class="search_button"><%= f.button :submit, 'Search' %></div>
+    </div>
+
+  </fieldset>
 <% end %>
 
-<%= "#{pluralize(@restaurants.count, 'restaurant')} found" %>
+<div class="search_results">
+  <%= "#{pluralize(@restaurants.count, 'restaurant')} found" %>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Restaurant</th>
+      <th>Neighborhood</th>
+      <th>Vegan Friendly</th>
+      <th>Vegetarian Friendly</th>
+      <th>Gluten-Free Friendly</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @restaurants.each do |restaurant| %>
+
+      <tr>
+        <td><%= link_to "#{restaurant.name}", restaurant_path(restaurant) %></td>
+        <td><%= restaurant.neighborhood %></td>
+        <td><%= restaurant.vegan_rating %></td>
+        <td><%= restaurant.vegetarian_rating %></td>
+        <td><%= restaurant.gluten_free_rating %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 

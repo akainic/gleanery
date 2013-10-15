@@ -1,6 +1,8 @@
 class HomeController < ApplicationController
 
   def index
+    @q = Restaurant.search(params[:q])
+    @restaurants = @q.result(distinct: true)
   end
 
   private
