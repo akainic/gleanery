@@ -10,8 +10,6 @@ class RestaurantsController < ApplicationController
     @comment = @restaurant.comments.build
     if user_signed_in?
       @rating = @restaurant.ratings.find_or_initialize_by(user: current_user)
-    else
-      @rating = @restaurant.ratings.find(params[:restaurant_id])
     end
   end
 

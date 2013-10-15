@@ -13,18 +13,32 @@ class Restaurant < ActiveRecord::Base
     dependent: :nullify
 
   def vegan_rating
-    rating = ratings.where(vegan: 1).count / ratings.count.to_f
-    (rating * 100).round(0)
+    total_rating = ratings.where(vegan: 0).count + ratings.where(vegan: 1).count
+    if total_rating == 0
+      "no ratings"
+    else
+      score = ratings.where(vegan: 1).count / total_rating.to_f
+      (score * 100).round(0)
+    end
   end
 
   def vegetarian_rating
-    rating = ratings.where(vegetarian: 1).count / ratings.count.to_f
-    (rating * 100).round(0)
+    total_rating = ratings.where(vegetarian: 0).count + ratings.where(vegetarian: 1).count
+    if total_rating == 0
+      "no ratings"
+    else
+      score = ratings.where(vegetarian: 1).count / total_rating.to_f
+      (score * 100).round(0)
+    end
   end
 
   def gluten_free_rating
-    rating = ratings.where(gluten_free: 1).count / ratings.count.to_f
-    (rating * 100).round(0)
+    total_rating = ratings.where(gluten_free: 0).count + ratings.where(gluten_free: 1).count
+    if total_rating == 0
+      "no ratings"
+    else
+      score = ratings.where(gluten_free: 1).count / total_rating.to_f
+      (score * 100).round(0)
+    end
   end
-
 end

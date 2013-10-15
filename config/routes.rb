@@ -3,7 +3,6 @@ Gleanery::Application.routes.draw do
   resources :restaurants do
     resources :comments do
     end
-    resources :upvotes
     resources :ratings
   end
 

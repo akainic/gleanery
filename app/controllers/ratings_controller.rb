@@ -31,5 +31,4 @@ class RatingsController < ApplicationController
   def rating_params
     params.require(:rating).permit(:vegan, :vegetarian, :gluten_free)
   end
-
 end
