@@ -23,27 +23,31 @@ feature 'user rates restaurant on diet', %Q{
   scenario 'user rates a restaurant as being friendly to vegans' do
     user = FactoryGirl.create(:user)
     restaurant = FactoryGirl.create(:restaurant)
-    previous_count = restaurant.vegan_rating #(vegan)
+    previous_count = restaurant.ratings.count
 
     sign_in_as(user)
     visit restaurant_path(restaurant)
-    choose('Vegan friendly')
+    choose('rating_vegan_1')
     click_on 'Rate'
 
-    expect(restaurant.vegan_rating).to eql(previous_count + 1)
+    expect(page).to have_content('100%')
+    expect(restaurant.ratings.count).to eql(previous_count + 1)
   end
 
-  pending 'user changes their rating' do
+  scenario 'user changes their rating' do
     user = FactoryGirl.create(:user)
     restaurant = FactoryGirl.create(:restaurant)
-    previous_count = restaurant.rating(vegan)
+    previous_count = restaurant.ratings.count
 
-    visit 'restaurants/#{restaurant.id}'
-    click_on 'No_vegan'
-    click_on 'Yes_vegan'
+    sign_in_as(user)
+    visit restaurant_path(restaurant)
+    choose('rating_vegan_1')
+    click_on 'Rate'
+    choose('rating_vegan_0')
+    click_on 'Rate'
 
-    expect(page).to have_content()
-    expect(restaurant.rating(vegan)).to eql(previous_count + 1)
+    expect(page).to have_content('0%')
+    expect(restaurant.ratings.count).to eql(previous_count + 1)
   end
 
 end

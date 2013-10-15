@@ -15,10 +15,8 @@
     <%= f.error_notification %>
 
     <div class="home_search">
-      <div class="search_label"><%= f.label :username %></div>
-      <div><%= f.text_field :username, :required => true, :autofocus => true %></div>
-      <div class="search_label"><%= f.label :email %></div>
-      <div><%= f.text_field :email, :required => true %></div>
+      <div><%= f.input :username, :required => true, label_html: { class: 'search_label' }, :autofocus => true %></div>
+      <div><%= f.input :email, :required => true, label_html: { class: 'search_label' } %></div>
       <div><%= f.input :password, :required => true, label_html: { class: 'search_label' } %></div>
       <div><%= f.input :password_confirmation, :required => true, label_html: { class: 'search_label' } %></div>
       <div class="search_button"><%= f.button :submit, "Sign up" %></div>

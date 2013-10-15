@@ -14,9 +14,6 @@ class User < ActiveRecord::Base
   validates_format_of :email,
     with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
 
-  validates_format_of :password,
-    with: /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,128}/
-
   has_many :ratings,
     inverse_of: :user,
     dependent: :nullify

@@ -4,7 +4,7 @@ feature 'user signs up', %Q{
   As an unregistered user
   I want to sign up for Gleanery
   So that I can create a profile and manage my preferences.
-} do 
+} do
 
   # Acceptance Criteria:
   #
@@ -31,10 +31,10 @@ feature 'user signs up', %Q{
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password, :match => :prefer_exact
     fill_in 'Password confirmation', with: user.password_confirmation, :match => :prefer_exact
-    
+
     click_button 'Sign up'
 
-    expect(page).to have_content('Welcome to Gleanery! You have signed up successfully.')
+    expect(page).to have_content('Welcome to Gleanery!')
     expect(User.count).to eql(previous_count + 1)
   end
 
@@ -50,41 +50,25 @@ feature 'user signs up', %Q{
     expect(User.count).to eql(previous_count)
   end
 
-  scenario 'user enters an email that is already registered' do
+  scenario 'user enters an email or username that is already registered' do
     user1 = FactoryGirl.create(:user)
     user2 = FactoryGirl.build(:user)
     previous_count = User.count
 
     visit root_path
     click_on 'Sign up'
-    fill_in 'Username', with: 'Swisschard99'
-    fill_in 'Email', with: user2.email
-    fill_in 'Password', with: user2.password, :match => :prefer_exact
-    fill_in 'Password confirmation', with: user2.password_confirmation, :match => :prefer_exact
+    fill_in 'Username', with: user1.username
+    fill_in 'Email', with: user1.email
+    fill_in 'Password', with: user1.password, :match => :prefer_exact
+    fill_in 'Password confirmation', with: user1.password_confirmation, :match => :prefer_exact
+
     click_button 'Sign up'
 
     expect(page).to have_content('has already been taken')
     expect(User.count).to eql(previous_count)
   end
 
-  scenario 'user enters a username that is already registered' do
-    user1 = FactoryGirl.create(:user)
-    user2 = FactoryGirl.build(:user)
-    previous_count = User.count
-
-    visit root_path
-    click_on 'Sign up'
-    fill_in 'Username', with: user2.username
-    fill_in 'Email', with: 'swisschard@example.com'
-    fill_in 'Password', with: user2.password, :match => :prefer_exact
-    fill_in 'Password confirmation', with: user2.password_confirmation, :match => :prefer_exact
-    click_button 'Sign up'
-
-    expect(page).to have_content('has already been taken')
-    expect(User.count).to eql(previous_count)
-  end
-
-  scenario 'user password and confirmation do not match' do 
+  scenario 'user password and confirmation do not match' do
     user = FactoryGirl.build(:user)
     previous_count = User.count
 
