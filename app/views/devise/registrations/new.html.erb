@@ -27,6 +27,19 @@
 <% end %>
 </div>
 
+<div class="row">
+  <%= simple_form_for :hello do |f| %>
+    <div class="row">
+      <div class="large-2 columns">
+        <label for="" class="inline">Your name</label>
+      </div>
+        <div class="large-10 columns">
+          <%= f.input :username, :required => true, label: false %>
+        </div>
+    </div>
+  <% end %>
+</div>
+
 <div class="devise_links">
   <%= render "devise/shared/links" %>
 </div>

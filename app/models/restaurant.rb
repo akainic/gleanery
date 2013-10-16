@@ -18,7 +18,7 @@ class Restaurant < ActiveRecord::Base
       "no ratings"
     else
       score = ratings.where(vegan: 1).count / total_rating.to_f
-      (score * 100).round(0)
+      "#{(score * 100).round(0)}%"
     end
   end
 
@@ -28,7 +28,7 @@ class Restaurant < ActiveRecord::Base
       "no ratings"
     else
       score = ratings.where(vegetarian: 1).count / total_rating.to_f
-      (score * 100).round(0)
+      "#{(score * 100).round(0)}%"
     end
   end
 
@@ -38,7 +38,7 @@ class Restaurant < ActiveRecord::Base
       "no ratings"
     else
       score = ratings.where(gluten_free: 1).count / total_rating.to_f
-      (score * 100).round(0)
+      "#{(score * 100).round(0)}%"
     end
   end
 end

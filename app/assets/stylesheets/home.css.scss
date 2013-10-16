@@ -3,7 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 body {
-  background-image: url('/app/assets/images/yellowgreentomatoescopy.jpg');
+  // background-image: url('yellowgreentomatoescopy.jpg');
+  background-size: 100%;
 }
 
 .notice {
@@ -16,7 +17,7 @@ fieldset {
 }
 
 .search_field {
-  margin: 30px;
+  // margin: 30px;
 }
 
 .home_search {
@@ -52,10 +53,6 @@ fieldset {
 .search_results {
   margin-left: 30px;
   font-style: italic;
-}
-
-.table {
-  margin: 10px 30px;
 }
 
 .restaurant_info {

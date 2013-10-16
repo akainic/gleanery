@@ -24,7 +24,16 @@
 }
 
 table {
-  margin-top: 10px;
+  width: 100%;
+
+  th {
+    width: 20%;
+  }
+
+  td {
+    width: 20%;
+  }
+
 }
 
 .restaurant_info {
