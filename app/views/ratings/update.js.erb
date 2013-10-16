@@ -1,0 +1,9 @@
+$('.vegan-rating').attr('style','<%= "width:#{@restaurant.vegan_rating}" %>');
+$('.vegetarian-rating').attr('style','<%= "width:#{@restaurant.vegetarian_rating}" %>');
+$('.gluten-free-rating').attr('style','<%= "width:#{@restaurant.gluten_free_rating}" %>');
+$('.overall-rating').attr('style','<%= "width:#{@restaurant.overall_rating}" %>');
+
+$('.vegan-percent').text('<%= @restaurant.vegan_rating %>');
+$('.vegetarian-percent').text('<%= @restaurant.vegetarian_rating %>');
+$('.gluten-free-percent').text('<%= @restaurant.gluten_free_rating %>');
+$('.overall-percent').text('<%= @restaurant.overall_rating %>');

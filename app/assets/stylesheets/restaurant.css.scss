@@ -1,10 +1,23 @@
 .box {
-  background-color: #E7F8FF;
-  margin: 2px;
+  background-color: #E9E9E9;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.diet_label {
+  font-size: .9em;
+  font-weight: bold;
+  margin: 10px;
+  text-align: center;
 }
 
 .rating {
   color: #68B516;
+}
+
+.progress {
+  margin: 10px;
+  text-align: center;
 }
 
 .comments_header {
