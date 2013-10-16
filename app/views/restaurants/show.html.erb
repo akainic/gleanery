@@ -10,22 +10,42 @@
 </div>
 
 <div class="row">
-  <div class="small-4 large-3 columns">
+  <div class="box small-3 large-3 columns">
     <div class="diet_label">Vegan friendly?</div>
     <div class="rating"><%= @restaurant.vegan_rating %></div>
-    <div class="progress round small-8 columns center"><span class="meter" style=<%= "width:#{@restaurant.vegan_rating}" %>></span></div>
+    <% if @restaurant.vegan_rating == "no ratings" %>
+      <div class="progress small-8 columns center"><span class="meter" style=<%= "width:0%" %>></span></div>
+    <% else %>
+      <div class="progress small-8 columns center"><span class="meter" style=<%= "width:#{@restaurant.vegan_rating}" %>></span></div>
+    <% end %>
   </div>
-  <div class="small-4 large-3 columns">
+  <div class="box small-3 large-3 columns">
     <div class="diet_label">Vegetarian friendly?</div>
     <div class="rating"><%= @restaurant.vegetarian_rating %></div>
-    <div class="progress round small-8 columns center"><span class="meter" style=<%= "width:#{@restaurant.vegetarian_rating}" %>></span></div>
+    <% if @restaurant.vegetarian_rating == "no ratings" %>
+      <div class="progress small-8 columns center"><span class="meter" style=<%= "width:0%" %>></span></div>
+    <% else %>
+      <div class="progress small-8 columns center"><span class="meter" style=<%= "width:#{@restaurant.vegetarian_rating}" %>></span></div>
+    <% end %>
   </div>
-  <div class="small-4 large-3 columns">
+  <div class="box small-3 large-3 columns">
     <div class="diet_label">Gluten-free friendly?</div>
     <div class="rating"><%= @restaurant.gluten_free_rating %></div>
-    <div class="progress round small-8 columns center"><span class="meter" style=<%= "width:#{@restaurant.gluten_free_rating}" %>></span></div>
+    <% if @restaurant.gluten_free_rating == "no ratings" %>
+      <div class="progress small-8 columns center"><span class="meter" style=<%= "width:0%" %>></span></div>
+    <% else %>
+      <div class="progress small-8 columns center"><span class="meter" style=<%= "width:#{@restaurant.gluten_free_rating}" %>></span></div>
+    <% end %>
   </div>
-  <div class="large-3 columns"> </div>
+  <div class="box small-3 large-3 columns">
+    <div class="diet_label">Overall</div>
+    <div class="rating"><%= @restaurant.overall_rating %></div>
+    <% if @restaurant.overall_rating == "no ratings" %>
+      <div class="progress small-8 columns center"><span class="meter" style=<%= "width:0%" %>></span></div>
+    <% else %>
+      <div class="progress small-8 columns center"><span class="meter" style=<%= "width#{@restaurant.overall_rating}" %>></span></div>
+    <% end %>
+  </div>
 </div>
 
 <div class="row">
@@ -65,14 +85,14 @@
         </div>
 
         <div class="home_search">
-          <%= f.button :submit, 'Submit' %>
+          <%= f.button :submit, 'Submit', class: "small button" %>
         </div>
       </fieldset>
     <% end %>
 
   <% else %>
 
-    <ul>
+    <ul class="comment_error">
       <li><%= link_to 'Sign in', new_user_session_path %> to rate and comment</li>
       <li>Not yet registered with Gleanery? <%= link_to 'Sign up', new_user_registration_path%></li>
     </ul>

@@ -711,7 +711,7 @@ $fieldset-bg: #F2FFCE;
 // $inline-list-bottom-margin: em-calc(17);
 // $inline-list-default-float-margin: em-calc(-22);
 
-// $inline-list-padding: 0;
+$inline-list-padding: 0;
 
 // We use this to control the overflow of the inline list.
 
@@ -909,7 +909,7 @@ $fieldset-bg: #F2FFCE;
 // We use these to set default inner padding and bottom margin
 
 // $panel-margin-bottom: em-calc(20);
-// $panel-padding: em-calc(20);
+$panel-padding: em-calc(10);
 
 // We use these to set default font colors
 

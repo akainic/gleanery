@@ -7,14 +7,12 @@
 <%= simple_form_for @q, :url => restaurants_path, :html => { :method => :get } do |f| %>
   <fieldset class="search_field">
 
-    <div class="home_search">
-      <h5>Find a restaurant</h5>
-    </div>
-
-    <div class="home_search">
-      <div class="left inline"><%= f.label 'Restaurant name', label_html: { class: 'search_label' } %></div>
-      <div><%= f.text_field :name_cont, :class => 'text_field', :autofocus => true %></div>
-      <div class="search_button"><%= f.button :submit, 'Search' %></div>
+    <div class="row home_search">
+      <div class="small-3 large-2 columns">
+        <label for="restaurant_name" class="right inline">Restaurant name</label>
+      </div>
+      <div class="small-7 large-8 columns"><%= f.text_field :name_cont, :class => 'text_field', :autofocus => true %></div>
+      <div class="index_search small-2 large-2 columns"><%= f.button :submit, 'Search', class: "small button" %></div>
     </div>
 
   </fieldset>
@@ -23,9 +21,10 @@
 </div>
 
 
-
-<div class="search_results">
-  <%= "#{pluralize(@restaurants.count, 'restaurant')} found" %>
+<div class="row">
+  <div class="search_results">
+    <%= "#{pluralize(@restaurants.count, 'restaurant')} found" %>
+  </div>
 </div>
 
 <div class="row">

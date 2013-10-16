@@ -41,4 +41,14 @@ class Restaurant < ActiveRecord::Base
       "#{(score * 100).round(0)}%"
     end
   end
+
+  def overall_rating
+    total_rating = ratings.where(overall: 0).count + ratings.where(overall: 1).count
+    if total_rating == 0
+      "no ratings"
+    else
+      score = ratings.where(overall: 1).count / total_rating.to_f
+      "#{(score * 100).round(0)}%"
+    end
+  end
 end

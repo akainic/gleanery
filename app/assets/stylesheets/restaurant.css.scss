@@ -1,3 +1,8 @@
+.box {
+  background-color: #E7F8FF;
+  margin: 2px;
+}
+
 .rating {
   color: #68B516;
 }
@@ -36,6 +41,10 @@ table {
 
 }
 
+.search_results{
+  margin-bottom: 10px;
+}
+
 .restaurant_info {
   margin-bottom: 10px;
 
@@ -50,4 +59,8 @@ table {
 
 .rate_restaurant {
   margin: 20px 0px 10px 0px;
+}
+
+.comment_error {
+  list-style: none;
 }

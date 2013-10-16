@@ -16,25 +16,23 @@ fieldset {
   background-color: white;
 }
 
-.search_field {
-  // margin: 30px;
-}
-
 .home_search {
   margin: 10px;
+  margin-bottom: 20px;
+}
+
+.current_password {
+  padding: 0px;
 }
 
 .search_button {
-  padding-top: 10px;
-}
-
-.search_label {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  margin-top: 10px;
+  margin-right: 30px;
 }
 
 .devise_links {
   margin: 30px;
+  font-size: 0.85em;
 }
 
 .current_user {

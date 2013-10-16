@@ -6,7 +6,7 @@
 <div class="row">
 <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
 
-  <fieldset class="search_field">
+  <fieldset class="search_field large-10 large-centered columns">
 
       <div class="home_search">
         <h5>Sign in</h5>
@@ -14,12 +14,21 @@
 
     <%= f.error_notification %>
 
-    <div class="home_search">
-      <div class="search_label"><%= f.label :login %></div>
-      <div><%= f.text_field :login, :required => false, :autofocus => true %></div>
-      <div><%= f.input :password, :required => false, label_html: { class: 'search_label' } %></div>
-      <div class="mycheckbox"><%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %></div>
-      <div class="search_button"><%= f.button :submit, "Sign in" %></div>
+    <div class="row home_search">
+      <div class="small-2 large-2 columns">
+        <label for="login" class="right inline">Login</label>
+      </div>
+      <div class="small-10 large-9 columns">
+        <%= f.text_field :login, required: false, autofocus: true, label: false %>
+      </div>
+      <div class="small-2 large-2 columns">
+        <label for="password" class="right inline">Password</label>
+      </div>
+      <div class="small-10 large-9 columns">
+        <%= f.input :password, required: false, label: false %>
+      </div>
+      <div class="mycheckbox small-9 large-9 small-offset-2 large-offset-2 columns"><%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %></div>
+      <div class="search_button right inline"><%= f.button :submit, "Sign in", class: "small button" %></div>
     </div>
 
   </fieldset>
