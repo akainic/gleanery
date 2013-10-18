@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   before_action :find_restaurant
 
   def index
-    @comment = @restaurant.comment
+    @comment = @restaurant.comments
   end
 
   def create

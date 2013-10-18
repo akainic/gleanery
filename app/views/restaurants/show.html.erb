@@ -10,114 +10,129 @@
 </div>
 
 <div class="row">
-  <div class="box small-3 large-3 columns">
-    <div class="diet_label">Vegan friendly?</div>
-    <div class="rating vegan-percent"><%= @restaurant.vegan_rating %></div>
-    <% if @restaurant.vegan_rating == "no ratings" %>
-      <div class="progress small-8 small-centered large-centered columns"><span class="meter" style=<%= "width:0%" %>></span></div>
-    <% else %>
-      <div class="progress small-8 small-centered large-centered columns"><span class="meter vegan-rating" style=<%= "width:#{@restaurant.vegan_rating}" %>></span></div>
-    <% end %>
-    <%= simple_form_for [@restaurant, @rating], remote: true do |f| %>
-      <%= f.hidden_field :vegan, value: 1 %>
-      <%= f.button :submit, 'Yes' %>
-    <% end %>
-    <%= simple_form_for [@restaurant, @rating], remote: true do |f| %>
-      <%= f.hidden_field :vegan, value: 0 %>
-      <%= f.button :submit, 'No' %>
-    <% end %>
-  </div>
-  <div class="box small-3 large-3 columns">
-    <div class="diet_label">Vegetarian friendly?</div>
-    <div class="rating vegetarian-percent"><%= @restaurant.vegetarian_rating %></div>
-    <% if @restaurant.vegetarian_rating == "no ratings" %>
-      <div class="progress small-8 small-centered large-centered column"><span class="meter" style=<%= "width:0%" %>></span></div>
-    <% else %>
-      <div class="progress small-8 small-centered large-centered column"><span class="meter vegetarian-rating" style=<%= "width:#{@restaurant.vegetarian_rating}" %>></span></div>
-    <% end %>
-    <%= simple_form_for [@restaurant, @rating], remote: true do |f| %>
-      <%= f.hidden_field :vegetarian, value: 1 %>
-      <%= f.button :submit, 'Yes' %>
-    <% end %>
-    <%= simple_form_for [@restaurant, @rating], remote: true do |f| %>
-      <%= f.hidden_field :vegetarian, value: 0 %>
-      <%= f.button :submit, 'No' %>
-    <% end %>
-  </div>
-  <div class="box small-3 large-3 columns">
-    <div class="diet_label">Gluten-free friendly?</div>
-    <div class="rating gluten-free-percent"><%= @restaurant.gluten_free_rating %></div>
-    <% if @restaurant.gluten_free_rating == "no ratings" %>
-      <div class="progress small-8 small-centered large-centered column"><span class="meter" style=<%= "width:0%" %>></span></div>
-    <% else %>
-      <div class="progress small-8 small-centered large-centered column"><span class="meter gluten-free-rating" style=<%= "width:#{@restaurant.gluten_free_rating}" %>></span></div>
-    <% end %>
-    <%= simple_form_for [@restaurant, @rating], remote: true do |f| %>
-      <%= f.hidden_field :gluten_free, value: 1 %>
-      <%= f.button :submit, 'Yes' %>
-    <% end %>
-    <%= simple_form_for [@restaurant, @rating], remote: true do |f| %>
-      <%= f.hidden_field :gluten_free, value: 0 %>
-      <%= f.button :submit, 'No' %>
-    <% end %>
-  </div>
-  <div class="box small-3 large-3 columns">
-    <div class="diet_label">Overall</div>
-    <div class="rating overall-percent"><%= @restaurant.overall_rating %></div>
-    <% if @restaurant.overall_rating == "no ratings" %>
-      <div class="progress small-8 small-centered large-centered column"><span class="meter" style=<%= "width:0%" %>></span></div>
-    <% else %>
-      <div class="progress small-8 small-centered large-centered column"><span class="meter overall-rating" style=<%= "width:#{@restaurant.overall_rating}" %>></span></div>
-    <% end %>
-    <%= simple_form_for [@restaurant, @rating], remote: true do |f| %>
-      <%= f.hidden_field :overall, value: 1 %>
-      <%= f.button :submit, 'Yes' %>
-    <% end %>
-    <%= simple_form_for [@restaurant, @rating], remote: true do |f| %>
-      <%= f.hidden_field :overall, value: 0 %>
-      <%= f.button :submit, 'No' %>
-    <% end %>
-  </div>
-</div>
 
-<div class="row">
-  <div class="small-6 large-6 columns rate_restaurant">Rate this restaurant:</div>
-</div>
+  <div class="small-6 large-3 columns">
+    <div class="box">
+      <div class="diet_label">Vegan friendly?</div>
+      <div class="rating vegan-percent"><%= @restaurant.vegan_rating %></div>
+      <% if @restaurant.vegan_rating == "no ratings" %>
+        <div class="progress small-8 small-centered large-centered columns"><span class="meter" style=<%= "width:0%" %>></span></div>
+      <% else %>
+        <div class="progress small-8 small-centered large-centered columns"><span class="meter vegan-rating" style=<%= "width:#{@restaurant.vegan_rating}" %>></span></div>
+      <% end %>
+      <% if user_signed_in? %>
+        <div class="left inline">
+          <%= simple_form_for [@restaurant, Rating.new], remote: true do |f| %>
+            <%= f.hidden_field :vegan, value: 0 %>
+            <%= f.button :submit, 'No', class: "tiny button" %>
+          <% end %>
+        </div>
+        <div class="right inline">
+          <%= simple_form_for [@restaurant, Rating.new], remote: true do |f| %>
+            <%= f.hidden_field :vegan, value: 1 %>
+            <%= f.button :submit, 'Yes', class: "tiny button" %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 
-<div class="row">
-  <% if user_signed_in? %>
-    <%= simple_form_for [@restaurant, @rating], remote: true do |f| %>
-      <div class="small-4 large-3 columns">
-        <%= f.input :vegan, as: :radio_buttons, collection: [['Yes', 1], ['No', 0]] %>
-      </div>
-      <div class="small-4 large-3 columns">
-        <%= f.input :vegetarian, as: :radio_buttons, collection: [['Yes', 1], ['No', 0]]  %>
-      </div>
-      <div class="small-4 large-3 columns">
-        <%= f.input :gluten_free, as: :radio_buttons, collection: [['Yes', 1], ['No', 0]]  %>
-      </div>
-      <div class="large-2 columns">
-        <%= f.button :submit, 'Rate' %>
-      </div>
-    <% end %>
-  <% end %>
+  <div class="small-6 large-3 columns">
+    <div class="box">
+      <div class="diet_label">Vegetarian friendly?</div>
+      <div class="rating vegetarian-percent"><%= @restaurant.vegetarian_rating %></div>
+      <% if @restaurant.vegetarian_rating == "no ratings" %>
+        <div class="progress small-8 small-centered large-centered column"><span class="meter" style=<%= "width:0%" %>></span></div>
+      <% else %>
+        <div class="progress small-8 small-centered large-centered column"><span class="meter vegetarian-rating" style=<%= "width:#{@restaurant.vegetarian_rating}" %>></span></div>
+      <% end %>
+      <% if user_signed_in? %>
+        <div class="right inline">
+          <%= simple_form_for [@restaurant, Rating.new], remote: true do |f| %>
+            <%= f.hidden_field :vegetarian, value: 1 %>
+            <%= f.button :submit, 'Yes', class: "tiny button" %>
+          <% end %>
+        </div>
+        <div class="left inline">
+          <%= simple_form_for [@restaurant, Rating.new], remote: true do |f| %>
+            <%= f.hidden_field :vegetarian, value: 0 %>
+            <%= f.button :submit, 'No', class: "tiny button" %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="small-6 large-3 columns">
+    <div class="box">
+      <div class="diet_label">Gluten-free friendly?</div>
+      <div class="rating gluten-free-percent"><%= @restaurant.gluten_free_rating %></div>
+      <% if @restaurant.gluten_free_rating == "no ratings" %>
+        <div class="progress small-8 small-centered large-centered column"><span class="meter" style=<%= "width:0%" %>></span></div>
+      <% else %>
+        <div class="progress small-8 small-centered large-centered column"><span class="meter gluten-free-rating" style=<%= "width:#{@restaurant.gluten_free_rating}" %>></span></div>
+      <% end %>
+      <% if user_signed_in? %>
+        <div class="right inline">
+          <%= simple_form_for [@restaurant, Rating.new], remote: true do |f| %>
+            <%= f.hidden_field :gluten_free, value: 1 %>
+            <%= f.button :submit, 'Yes', class: "tiny button" %>
+          <% end %>
+        </div>
+        <div class="left inline">
+          <%= simple_form_for [@restaurant, Rating.new], remote: true do |f| %>
+            <%= f.hidden_field :gluten_free, value: 0 %>
+            <%= f.button :submit, 'No', class: "tiny button" %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="small-6 large-3 columns">
+    <div class="box">
+      <div class="diet_label">Overall</div>
+      <div class="rating overall-percent"><%= @restaurant.overall_rating %></div>
+      <% if @restaurant.overall_rating == "no ratings" %>
+        <div class="progress small-8 small-centered large-centered column"><span class="meter" style=<%= "width:0%" %>></span></div>
+      <% else %>
+        <div class="progress small-8 small-centered large-centered column"><span class="meter overall-rating" style=<%= "width:#{@restaurant.overall_rating}" %>></span></div>
+      <% end %>
+      <% if user_signed_in? %>
+        <div class="right inline">
+          <%= simple_form_for [@restaurant, Rating.new], remote: true do |f| %>
+            <%= f.hidden_field :overall, value: 1 %>
+            <%= f.button :submit, 'Yes', class: "tiny button" %>
+          <% end %>
+        </div>
+        <div class="left inline">
+          <%= simple_form_for [@restaurant, Rating.new], remote: true do |f| %>
+            <%= f.hidden_field :overall, value: 0 %>
+            <%= f.button :submit, 'No', class: "tiny button" %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
 </div>
 
 <div class="row">
   <% if user_signed_in? %>
     <%= simple_form_for [@restaurant, @comment] do |f| %>
       <fieldset>
-        <div class="home_search">
-          <h5>Post comment</h5>
-        </div>
+
         <%= f.error_notification %>
 
-        <div class="home_search">
-          <%= f.input :comment, :required => true, :autofocus => true %>
-        </div>
-
-        <div class="home_search">
-          <%= f.button :submit, 'Submit', class: "small button" %>
+        <div class="row home_search">
+          <div class="small-3 large-2 columns">
+            <label for="comment" class="right inline">Post a comment</label>
+          </div>
+          <div class="small-7 large-8 columns">
+            <%= f.input :comment, as: :text, :required => true, :autofocus => true, label: false %>
+          </div>
+          <div class="small-2 large-2 columns"><%= f.button :submit, 'Post', class: "small button" %>
+          </div>
         </div>
       </fieldset>
     <% end %>

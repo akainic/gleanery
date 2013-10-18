@@ -3,13 +3,25 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 body {
-  // background-image: url('yellowgreentomatoescopy.jpg');
+  background-image: url('albion.jpg');
   background-size: 100%;
+}
+
+nav {
+  opacity: 0.85;
+}
+
+footer {
+  background-color: white;
+}
+
+.body_background {
+  opacity: 0.85;
 }
 
 .notice {
   margin-left: 33.33333px;
-  color: #68B516;
+  color: black;
 }
 
 fieldset {

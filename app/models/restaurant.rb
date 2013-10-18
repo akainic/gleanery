@@ -12,10 +12,6 @@ class Restaurant < ActiveRecord::Base
     inverse_of: :restaurant,
     dependent: :nullify
 
-  def rating(diet)
-    total_rating = ratings.where(diet => 0).count + ratings.where(diet => 1).count
-  end
-
   def vegan_rating
     total_rating = ratings.where(vegan: 0).count + ratings.where(vegan: 1).count
     if total_rating == 0
