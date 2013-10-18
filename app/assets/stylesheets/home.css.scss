@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 body {
-  background-image: url('albion.jpg');
+  background-image: image-url(image_path('albion.jpg'));
   background-size: 100%;
 }
 
