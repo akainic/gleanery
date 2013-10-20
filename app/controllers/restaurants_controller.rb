@@ -3,7 +3,15 @@ class RestaurantsController < ApplicationController
 
   def index
     @q = Restaurant.search(params[:q])
-    @restaurants = @q.result(distinct: true)
+    if params[:diet] == "vegan"
+      @restaurants = @q.result(distinct: true).sort_by { |restaurant| restaurant.vegan_rating }
+    elsif params[:diet] == "vegetarian"
+      @restaurants = @q.result(distinct: true).sort_by { |restaurant| restaurant.vegetarian_rating }
+    elsif params[:diet] == "gluten_free"
+      @restaurants = @q.result(distinct: true).sort_by { |restaurant| restaurant.gluten_free_rating }
+    else
+      @restaurants = @q.result(distinct: true)
+    end
   end
 
   def show

@@ -5,6 +5,7 @@
 body {
   background-image: image-url(image_path('albion.jpg'));
   background-size: 100%;
+  overflow: auto;
 }
 
 nav {
@@ -33,6 +34,15 @@ fieldset {
   margin-bottom: 20px;
 }
 
+.diet_checkbox {
+  font-size: 0.85em;
+  margin-top: 8px;
+
+  label {
+    padding-left: 5px;
+  }
+}
+
 .current_password {
   padding: 0px;
 }
@@ -54,6 +64,11 @@ fieldset {
   font-size: 0.8125em;
   font-weight: bold;
   color: black;
+}
+
+.detail {
+  background-color: white;
+  padding: 20px;
 }
 
 .mycheckbox input[type="checkbox"] {

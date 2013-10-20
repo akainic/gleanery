@@ -2,56 +2,59 @@
   <li><a href="/">Home</a></li>
   <li class="current"><a href="/restaurants">Restaurants</a></li>
 </ul>
-<div class="row">
-  <div class="large-12 columns">
-<%= simple_form_for @q, :url => restaurants_path, :html => { :method => :get } do |f| %>
-  <fieldset class="search_field">
 
-    <div class="row home_search">
-      <div class="small-3 large-2 columns">
-        <label for="restaurant_name" class="right inline">Restaurant name</label>
-      </div>
-      <div class="small-7 large-8 columns"><%= f.text_field :name_cont, :class => 'text_field', :autofocus => true %></div>
-      <div class="index_search small-2 large-2 columns"><%= f.button :submit, 'Search', class: "small button" %></div>
+<div class="row detail">
+  <div class="row">
+    <div class="large-12 columns">
+      <%= simple_form_for @q, :url => restaurants_path, :html => { :method => :get } do |f| %>
+        <fieldset class="search_field">
+
+          <div class="row home_search">
+            <div class="small-3 large-2 columns">
+              <label for="restaurant_name" class="right inline">Restaurant name</label>
+            </div>
+            <div class="small-7 large-8 columns"><%= f.text_field :name_cont, :class => 'text_field', :autofocus => true %></div>
+            <div class="index_search small-2 large-2 columns"><%= f.button :submit, 'Search', class: "small button" %></div>
+          </div>
+
+        </fieldset>
+      <% end %>
     </div>
-
-  </fieldset>
-<% end %>
-</div>
-</div>
-
-
-<div class="row">
-  <div class="search_results">
-    <%= "#{pluralize(@restaurants.count, 'restaurant')} found" %>
   </div>
-</div>
 
-<div class="row">
-  <div class="large-12 columns">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Restaurant</th>
-          <th>Neighborhood</th>
-          <th>Vegan Friendly</th>
-          <th>Vegetarian Friendly</th>
-          <th>Gluten-Free Friendly</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @restaurants.each do |restaurant| %>
 
+  <div class="row">
+    <div class="search_results">
+      <%= "#{pluralize(@restaurants.count, 'restaurant')} found" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large-12 columns">
+      <table class="table">
+        <thead>
           <tr>
-            <td><%= link_to "#{restaurant.name}", restaurant_path(restaurant) %></td>
-            <td><%= restaurant.neighborhood %></td>
-            <td><%= restaurant.vegan_rating %></td>
-            <td><%= restaurant.vegetarian_rating %></td>
-            <td><%= restaurant.gluten_free_rating %></td>
+            <th>Restaurant</th>
+            <th>Neighborhood</th>
+            <th>Vegan Friendly</th>
+            <th>Vegetarian Friendly</th>
+            <th>Gluten-Free Friendly</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <% @restaurants.each do |restaurant| %>
+
+            <tr>
+              <td><%= link_to "#{restaurant.name}", restaurant_path(restaurant) %></td>
+              <td><%= restaurant.neighborhood %></td>
+              <td><%= restaurant.vegan_rating %></td>
+              <td><%= restaurant.vegetarian_rating %></td>
+              <td><%= restaurant.gluten_free_rating %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 

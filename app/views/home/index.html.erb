@@ -13,6 +13,23 @@
         </div>
         <div class="small-2 large-2 columns"><%= f.button :submit, 'Search', class: "small button" %></div>
       </div>
+      <div class="row home_search">
+        <div class="small-1 small-centered columns">OR</div>
+      </div>
+      <div class="row home_search">
+        <div class="small-3 large-3 columns">
+          <label for="restaurant_name" class="right inline">Dietary restriction</label>
+        </div>
+        <div class="small-9 large-9 columns">
+          <div class="row">
+          <form>
+            <div class="small-12 large-3 columns diet_checkbox"><input type="checkbox" name="diet" value="vegan">Vegan<br></div>
+            <div class="small-12 large-3 columns diet_checkbox"><input type="checkbox" name="diet" value="vegetarian">Vegetarian<br></div>
+            <div class="small-12 large-3 columns diet_checkbox"><input type="checkbox" name="diet" value="gluten_free">Gluten-free<br></div>
+            <div class="small-12 large-3 columns diet_checkbox"></div>
+          </form>
+          </div>
+        </div>
     </fieldset>
   <% end %>
 </div>
