@@ -2,22 +2,44 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-body {
-  background-image: image-url(image_path('albion.jpg'));
-  background-size: 100%;
-  overflow: auto;
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 nav {
   opacity: 0.85;
 }
 
-footer {
-  background-color: white;
+#wrapper {
+  min-height: 100%;
+  position: relative;
+  background-image: image-url(image_path('albion.jpg'));
+  background-size: cover;
 }
 
 .body_background {
   opacity: 0.85;
+  padding-bottom: 6em;
+}
+
+#footer {
+  width: 100%;
+  position: absolute;
+  background-color: #5D6A75;
+  color: #E9E9E9;
+  font-size: 0.85em;
+  height: 6em;
+  bottom: 0;
+
+  a {
+    color: #E9E9E9;
+  }
+
+  a:hover {
+    color: #CFCFCF;
+  }
 }
 
 .notice {
@@ -29,17 +51,27 @@ fieldset {
   background-color: white;
 }
 
+label {
+  color: black;
+}
+
 .home_search {
   margin: 10px;
   margin-bottom: 20px;
+}
+
+.search_option {
+  margin-bottom: 10px;
+  font-style: italic;
+  font-size: 0.85em;
 }
 
 .diet_checkbox {
   font-size: 0.85em;
   margin-top: 8px;
 
-  label {
-    padding-left: 5px;
+  input {
+    margin-right: 5px;
   }
 }
 
@@ -87,4 +119,11 @@ fieldset {
     list-style: none;
   }
 }
+
+.diets_list li {
+  list-style: none;
+  padding-left: 15px;
+}
+
+
 
