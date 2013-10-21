@@ -5,6 +5,10 @@
     <li class="current"><a href="#"><%= @restaurant.name %></a></li>
   </ul>
 
+  <% flash.each do |name, msg| -%>
+    <div class="<%= name %>"><%= msg %></div>
+  <% end -%>
+
   <div class="restaurant_info">
     <div class="restaurant_name"><%= @restaurant.name %></div>
     <div class="restaurant_neighborhood"><%= @restaurant.neighborhood %></div>

@@ -27,10 +27,10 @@ feature 'user signs up', %Q{
 
     visit root_path
     click_on 'Sign up'
-    fill_in 'Username', with: user.username
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password, :match => :prefer_exact
-    fill_in 'Password confirmation', with: user.password_confirmation, :match => :prefer_exact
+    fill_in 'user_username', with: user.username
+    fill_in 'user_email', with: user.email
+    fill_in 'user_password', with: user.password, :match => :prefer_exact
+    fill_in 'user_password_confirmation', with: user.password_confirmation, :match => :prefer_exact
 
     click_button 'Sign up'
 
@@ -57,10 +57,10 @@ feature 'user signs up', %Q{
 
     visit root_path
     click_on 'Sign up'
-    fill_in 'Username', with: user1.username
-    fill_in 'Email', with: user1.email
-    fill_in 'Password', with: user1.password, :match => :prefer_exact
-    fill_in 'Password confirmation', with: user1.password_confirmation, :match => :prefer_exact
+    fill_in 'user_username', with: user1.username
+    fill_in 'user_email', with: user1.email
+    fill_in 'user_password', with: user1.password, :match => :prefer_exact
+    fill_in 'user_password_confirmation', with: user1.password_confirmation, :match => :prefer_exact
 
     click_button 'Sign up'
 
@@ -74,10 +74,10 @@ feature 'user signs up', %Q{
 
     visit root_path
     click_on 'Sign up'
-    fill_in 'Username', with: user.username
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password, :match => :prefer_exact
-    fill_in 'Password confirmation', with: 'Greens100', :match => :prefer_exact
+    fill_in 'user_username', with: user.username
+    fill_in 'user_email', with: user.email
+    fill_in 'user_password', with: user.password, :match => :prefer_exact
+    fill_in 'user_password_confirmation', with: 'Greens100', :match => :prefer_exact
     click_button 'Sign up'
 
     expect(page).to have_content("doesn't match")

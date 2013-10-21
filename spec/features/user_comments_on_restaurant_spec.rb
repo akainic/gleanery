@@ -31,10 +31,9 @@ feature 'user comments on a restaurant', %Q{
     sign_in_as(user)
 
     visit restaurant_path(restaurant)
-    fill_in 'Comment', with: 'This restaurant has great vegan options'
-    click_button 'Submit'
+    fill_in 'comment_comment', with: 'This restaurant has great vegan options'
+    click_button 'Post'
 
-    expect(page).to have_content('Comment successfully posted')
     expect(page).to have_content('This restaurant has great vegan options')
     expect(Comment.count).to eql(previous_count + 1)
   end
@@ -47,10 +46,9 @@ feature 'user comments on a restaurant', %Q{
     sign_in_as(user)
 
     visit restaurant_path(restaurant)
-    fill_in 'Comment', with: 'Bug'
-    click_button 'Submit'
+    fill_in 'comment_comment', with: 'Bug'
+    click_button 'Post'
 
-    expect(page).to have_content('Your comment was not posted.')
     expect(page).to have_content('Comments must be at least 5 characters long.')
     expect(Comment.count).to eql(previous_count)
   end

@@ -20,7 +20,7 @@ describe Restaurant do
       FactoryGirl.create(:rating, vegan: 1, restaurant: restaurant)
       FactoryGirl.create(:rating, vegan: 0, restaurant: restaurant)
 
-      expect(restaurant.vegan_rating).to eql(67)
+      expect(restaurant.vegan_rating).to eql('67%')
     end
   end
 

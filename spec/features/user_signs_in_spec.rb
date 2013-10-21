@@ -28,8 +28,8 @@ feature 'user signs in', %Q{
 
     visit root_path
     click_on 'Sign in'
-    fill_in 'Login', with: user.email
-    fill_in 'Password', with: 'Greens100'
+    fill_in 'user_login', with: user.email
+    fill_in 'user_password', with: 'Greens100'
     click_button 'Sign in'
 
     expect(page).to have_content('Invalid login or password')
