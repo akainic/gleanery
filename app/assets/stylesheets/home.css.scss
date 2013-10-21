@@ -121,6 +121,7 @@ label {
 .search_results {
   margin-left: 30px;
   font-style: italic;
+  font-size: 0.85em;
 }
 
 .restaurant_info {
@@ -141,5 +142,8 @@ label {
   padding-top: 30px;
 }
 
-
-
+th {
+  border-bottom: dotted;
+  border-width: 1px;
+  border-color: lightgray;
+}

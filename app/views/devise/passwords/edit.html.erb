@@ -1,7 +1,24 @@
-<%= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
-  <fieldset>
+<ul class="breadcrumbs">
+  <li><a href="/">Home</a></li>
+  <li class="current">Change Password</li>
+</ul>
 
-    <legend>Change your password</legend>
+<% flash.each do |name, msg| %>
+  <div class="<%= name %>"><%= msg %></div>
+<% end %>
+
+<div class="devise_links">
+  <%= render "devise/shared/links" %>
+</div>
+
+<div class="row">
+<%= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
+
+  <fieldset class="search_field large-10 large-centered columns">
+
+    <div class="home_search">
+      <h5>Change your password</h5>
+    </div>
 
     <%= f.error_notification %>
 
@@ -14,7 +31,7 @@
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "Change my password" %>
+      <%= f.button :submit, "Change my password", class: "small_button" %>
     </div>
 
   </fieldset>
