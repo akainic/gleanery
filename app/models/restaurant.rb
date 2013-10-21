@@ -15,7 +15,7 @@ class Restaurant < ActiveRecord::Base
   def vegan_rating
     total_rating = ratings.where(vegan: 0).count + ratings.where(vegan: 1).count
     if total_rating == 0
-      "no ratings"
+      "0%"
     else
       score = ratings.where(vegan: 1).count / total_rating.to_f
       "#{(score * 100).round(0)}%"
@@ -25,7 +25,7 @@ class Restaurant < ActiveRecord::Base
   def vegetarian_rating
     total_rating = ratings.where(vegetarian: 0).count + ratings.where(vegetarian: 1).count
     if total_rating == 0
-      "no ratings"
+      "0%"
     else
       score = ratings.where(vegetarian: 1).count / total_rating.to_f
       "#{(score * 100).round(0)}%"
@@ -35,7 +35,7 @@ class Restaurant < ActiveRecord::Base
   def gluten_free_rating
     total_rating = ratings.where(gluten_free: 0).count + ratings.where(gluten_free: 1).count
     if total_rating == 0
-      "no ratings"
+      "0%"
     else
       score = ratings.where(gluten_free: 1).count / total_rating.to_f
       "#{(score * 100).round(0)}%"
@@ -45,7 +45,7 @@ class Restaurant < ActiveRecord::Base
   def overall_rating
     total_rating = ratings.where(overall: 0).count + ratings.where(overall: 1).count
     if total_rating == 0
-      "no ratings"
+      "0%"
     else
       score = ratings.where(overall: 1).count / total_rating.to_f
       "#{(score * 100).round(0)}%"

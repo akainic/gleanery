@@ -19,12 +19,12 @@
     <div class="small-6 large-3 columns">
       <div class="box">
         <div class="diet_label">Vegan friendly?</div>
-        <div class="rating vegan-percent"><%= @restaurant.vegan_rating %></div>
-        <% if @restaurant.vegan_rating == "no ratings" %>
-          <div class="progress small-8 small-centered large-centered columns"><span class="meter" style=<%= "width:0%" %>></span></div>
+        <% if @restaurant.ratings.where(vegan: 0).count == 0 && @restaurant.ratings.where(vegan: 1).count == 0 %>
+          <div class="rating vegan-percent">No ratings</div>
         <% else %>
-          <div class="progress small-8 small-centered large-centered columns"><span class="meter vegan-rating" style=<%= "width:#{@restaurant.vegan_rating}" %>></span></div>
+          <div class="rating vegan-percent"><%= @restaurant.vegan_rating %></div>
         <% end %>
+        <div class="progress small-8 small-centered large-centered columns"><span class="meter vegan-rating" style=<%= "width:#{@restaurant.vegan_rating}" %>></span></div>
         <% if user_signed_in? %>
           <div class="left inline">
             <%= simple_form_for [@restaurant, Rating.new], remote: true do |f| %>
@@ -45,12 +45,12 @@
     <div class="small-6 large-3 columns">
       <div class="box">
         <div class="diet_label">Vegetarian friendly?</div>
-        <div class="rating vegetarian-percent"><%= @restaurant.vegetarian_rating %></div>
-        <% if @restaurant.vegetarian_rating == "no ratings" %>
-          <div class="progress small-8 small-centered large-centered column"><span class="meter" style=<%= "width:0%" %>></span></div>
+        <% if @restaurant.ratings.where(vegetarian: 0).count == 0 && @restaurants.ratings.where(vegetarian: 1).count == 0 %>
+          <div class="rating vegetarian-percent">No ratings</div>
         <% else %>
-          <div class="progress small-8 small-centered large-centered column"><span class="meter vegetarian-rating" style=<%= "width:#{@restaurant.vegetarian_rating}" %>></span></div>
+          <div class="rating vegetarian-percent"><%= @restaurant.vegetarian_rating %></div>
         <% end %>
+        <div class="progress small-8 small-centered large-centered column"><span class="meter vegetarian-rating" style=<%= "width:#{@restaurant.vegetarian_rating}" %>></span></div>
         <% if user_signed_in? %>
           <div class="right inline">
             <%= simple_form_for [@restaurant, Rating.new], remote: true do |f| %>
@@ -71,12 +71,12 @@
     <div class="small-6 large-3 columns">
       <div class="box">
         <div class="diet_label">Gluten-free friendly?</div>
-        <div class="rating gluten-free-percent"><%= @restaurant.gluten_free_rating %></div>
-        <% if @restaurant.gluten_free_rating == "no ratings" %>
-          <div class="progress small-8 small-centered large-centered column"><span class="meter" style=<%= "width:0%" %>></span></div>
+        <% if @restaurant.ratings.where(gluten_free: 0).count == 0 && @restaurant.ratings.where(gluten_free: 1).count == 0 %>
+          <div class="rating gluten-free-percent">No ratings</div>
         <% else %>
-          <div class="progress small-8 small-centered large-centered column"><span class="meter gluten-free-rating" style=<%= "width:#{@restaurant.gluten_free_rating}" %>></span></div>
+          <div class="rating gluten-free-percent"><%= @restaurant.gluten_free_rating %></div>
         <% end %>
+        <div class="progress small-8 small-centered large-centered column"><span class="meter gluten-free-rating" style=<%= "width:#{@restaurant.gluten_free_rating}" %>></span></div>
         <% if user_signed_in? %>
           <div class="right inline">
             <%= simple_form_for [@restaurant, Rating.new], remote: true do |f| %>
@@ -97,12 +97,12 @@
     <div class="small-6 large-3 columns">
       <div class="box">
         <div class="diet_label">Overall</div>
-        <div class="rating overall-percent"><%= @restaurant.overall_rating %></div>
-        <% if @restaurant.overall_rating == "no ratings" %>
-          <div class="progress small-8 small-centered large-centered column"><span class="meter" style=<%= "width:0%" %>></span></div>
+        <% if @restaurant.ratings.where(overall: 0).count == 0 && @restaurant.ratings.where(overall: 1).count == 0 %>
+          <div class="rating overall-percent">No ratings</div>
         <% else %>
-          <div class="progress small-8 small-centered large-centered column"><span class="meter overall-rating" style=<%= "width:#{@restaurant.overall_rating}" %>></span></div>
+          <div class="rating overall-percent"><%= @restaurant.overall_rating %></div>
         <% end %>
+        <div class="progress small-8 small-centered large-centered column"><span class="meter overall-rating" style=<%= "width:#{@restaurant.overall_rating}" %>></span></div>
         <% if user_signed_in? %>
           <div class="right inline">
             <%= simple_form_for [@restaurant, Rating.new], remote: true do |f| %>
