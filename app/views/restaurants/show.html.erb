@@ -28,14 +28,14 @@
         <% if user_signed_in? %>
           <div class="left inline">
             <%= simple_form_for [@restaurant, Rating.new], remote: true do |f| %>
-              <%= f.hidden_field :vegan, value: 0, html: { id: "vegan_rating_0" } %>
-              <%= f.button :submit, '-', class: "tiny button vote_button" %>
+              <%= f.hidden_field :vegan, value: 0 %>
+              <%= f.button :submit, '-', class: "tiny button vote_button vegan_no" %>
             <% end %>
           </div>
           <div class="right inline">
             <%= simple_form_for [@restaurant, Rating.new], remote: true do |f| %>
-              <%= f.hidden_field :vegan, value: 1, html: { id: "vegan_rating_1"} %>
-              <%= f.button :submit, '+', class: "tiny button vote_button" %>
+              <%= f.hidden_field :vegan, value: 1 %>
+              <%= f.button :submit, '+', class: "tiny button vote_button vegan_yes" %>
             <% end %>
           </div>
         <% end %>
@@ -55,13 +55,13 @@
           <div class="right inline">
             <%= simple_form_for [@restaurant, Rating.new], remote: true do |f| %>
               <%= f.hidden_field :vegetarian, value: 1 %>
-              <%= f.button :submit, '+', class: "tiny button vote_button" %>
+              <%= f.button :submit, '+', class: "tiny button vote_button vegetarian_yes" %>
             <% end %>
           </div>
           <div class="left inline">
             <%= simple_form_for [@restaurant, Rating.new], remote: true do |f| %>
               <%= f.hidden_field :vegetarian, value: 0 %>
-              <%= f.button :submit, '-', class: "tiny button vote_button" %>
+              <%= f.button :submit, '-', class: "tiny button vote_button vegetarian_no" %>
             <% end %>
           </div>
         <% end %>
@@ -81,13 +81,13 @@
           <div class="right inline">
             <%= simple_form_for [@restaurant, Rating.new], remote: true do |f| %>
               <%= f.hidden_field :gluten_free, value: 1 %>
-              <%= f.button :submit, '+', class: "tiny button vote_button" %>
+              <%= f.button :submit, '+', class: "tiny button vote_button gluten_free_yes" %>
             <% end %>
           </div>
           <div class="left inline">
             <%= simple_form_for [@restaurant, Rating.new], remote: true do |f| %>
               <%= f.hidden_field :gluten_free, value: 0 %>
-              <%= f.button :submit, '-', class: "tiny button vote_button" %>
+              <%= f.button :submit, '-', class: "tiny button vote_button gluten_free_no" %>
             <% end %>
           </div>
         <% end %>
@@ -107,13 +107,13 @@
           <div class="right inline">
             <%= simple_form_for [@restaurant, Rating.new], remote: true do |f| %>
               <%= f.hidden_field :overall, value: 1 %>
-              <%= f.button :submit, '+', class: "tiny button vote_button" %>
+              <%= f.button :submit, '+', class: "tiny button vote_button overall_yes" %>
             <% end %>
           </div>
           <div class="left inline">
             <%= simple_form_for [@restaurant, Rating.new], remote: true do |f| %>
               <%= f.hidden_field :overall, value: 0 %>
-              <%= f.button :submit, '-', class: "tiny button vote_button" %>
+              <%= f.button :submit, '-', class: "tiny button vote_button overall_no" %>
             <% end %>
           </div>
         <% end %>
