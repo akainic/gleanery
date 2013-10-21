@@ -29,7 +29,7 @@ feature 'user rates restaurant on diet', %Q{
 
     visit restaurant_path(restaurant)
     save_and_open_page
-    find(:xpath, "//input[@id='rating_vegan']").set 1
+    find(:xpath, "//input[@id='rating_vegan_1']").set 1
 
     expect(page).to have_content('100%')
     expect(restaurant.ratings.count).to eql(previous_count + 1)
@@ -43,9 +43,9 @@ feature 'user rates restaurant on diet', %Q{
     sign_in_as(user)
 
     visit restaurant_path(restaurant)
-    click_button('rating_vegan', match: :second)
+    fill_in('rating_vegan_1', with: 1)
     click_on 'Rate'
-    click_button('rating_vegan', match: :first)
+    fill_in('rating_vegan_0', with: 0)
     click_on 'Rate'
 
     expect(page).to have_content('0%')

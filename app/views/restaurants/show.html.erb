@@ -28,13 +28,13 @@
         <% if user_signed_in? %>
           <div class="left inline">
             <%= simple_form_for [@restaurant, Rating.new], remote: true do |f| %>
-              <%= f.hidden_field :vegan, value: 0 %>
+              <%= f.hidden_field :vegan, value: 0, html: { id: "vegan_rating_0" } %>
               <%= f.button :submit, '-', class: "tiny button vote_button" %>
             <% end %>
           </div>
           <div class="right inline">
             <%= simple_form_for [@restaurant, Rating.new], remote: true do |f| %>
-              <%= f.hidden_field :vegan, value: 1 %>
+              <%= f.hidden_field :vegan, value: 1, html: { id: "vegan_rating_1"} %>
               <%= f.button :submit, '+', class: "tiny button vote_button" %>
             <% end %>
           </div>
