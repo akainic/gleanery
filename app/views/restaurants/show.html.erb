@@ -117,25 +117,24 @@
     </div>
 
   </div>
-
+</div>
+<div class="comments_field">
   <div class="row">
     <% if user_signed_in? %>
       <%= simple_form_for [@restaurant, @comment] do |f| %>
-        <fieldset>
 
-          <%= f.error_notification %>
+        <%= f.error_notification %>
 
-          <div class="row home_search">
-            <div class="small-3 large-2 columns">
-              <label for="comment" class="right inline">Post a comment</label>
-            </div>
-            <div class="small-7 large-8 columns">
-              <%= f.input :comment, as: :text, :required => true, :autofocus => true, label: false %>
-            </div>
-            <div class="small-2 large-2 columns"><%= f.button :submit, 'Post', class: "small button" %>
-            </div>
+        <div class="row home_search">
+          <div class="small-3 large-2 columns">
+            <label for="comment" class="right inline">Post a comment</label>
           </div>
-        </fieldset>
+          <div class="small-7 large-8 columns">
+            <%= f.input :comment, as: :text, :required => true, :autofocus => true, label: false %>
+          </div>
+          <div class="small-2 large-2 columns"><%= f.button :submit, 'Post', class: "small button" %>
+          </div>
+        </div>
       <% end %>
 
     <% else %>

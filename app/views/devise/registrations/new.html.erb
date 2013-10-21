@@ -7,6 +7,10 @@
   <div class="<%= name %>"><%= msg %></div>
 <% end -%>
 
+<div class="devise_links">
+  Already a Gleanery member? <%= render "devise/shared/links" %>
+</div>
+
 <div class="row">
 <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
 
@@ -49,8 +53,4 @@
   </fieldset>
 
 <% end %>
-</div>
-
-<div class="devise_links">
-  Already a Gleanery member? <%= render "devise/shared/links" %>
 </div>
