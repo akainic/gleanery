@@ -1,4 +1,11 @@
-<div class="row">
+<ul class="breadcrumbs">
+</ul>
+
+<% flash.each do |name, msg| -%>
+  <div class="<%= name %>"><%= msg %></div>
+<% end -%>
+
+<div class="row home_field">
   <%= simple_form_for @q, :url => restaurants_path, :html => { :method => :get } do |f| %>
     <fieldset class="search_field large-10 large-centered columns">
       <div class="home_search">

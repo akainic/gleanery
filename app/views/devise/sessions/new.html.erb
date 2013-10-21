@@ -3,6 +3,10 @@
   <li class="current"><a href="/sign_in">Sign In</a></li>
 </ul>
 
+<% flash.each do |name, msg| -%>
+  <div class="<%= name %>"><%= msg %></div>
+<% end -%>
+
 <div class="row">
 <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
 

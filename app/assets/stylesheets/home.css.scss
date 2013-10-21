@@ -17,11 +17,7 @@ nav {
   position: relative;
   background-image: image-url(image_path('albion.jpg'));
   background-size: cover;
-}
-
-.body_background {
-  opacity: 0.85;
-  padding-bottom: 6em;
+  margin-bottom: -10em;
 }
 
 #footer {
@@ -29,9 +25,11 @@ nav {
   position: absolute;
   background-color: #5D6A75;
   color: #E9E9E9;
-  font-size: 0.85em;
-  height: 6em;
+  font-size: 0.75em;
+  height: 10em;
   bottom: 0;
+  padding: 30px 20px 20px 20px;
+  clear: both;
 
   a {
     color: #E9E9E9;
@@ -44,7 +42,12 @@ nav {
 
 .notice {
   margin-left: 33.33333px;
-  color: black;
+  color: white;
+  font-weight: bold;
+}
+
+.home_field {
+  margin-top: 5em;
 }
 
 fieldset {

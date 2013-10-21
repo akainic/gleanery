@@ -3,6 +3,10 @@
   <li class="current"><a href="/users/edit">Edit User</a></li>
 </ul>
 
+<% flash.each do |name, msg| -%>
+  <div class="<%= name %>"><%= msg %></div>
+<% end -%>
+
 <div class="row">
 <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <fieldset class="search_field large-10 large-centered columns">

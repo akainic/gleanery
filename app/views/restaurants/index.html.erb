@@ -1,73 +1,81 @@
-<ul class="breadcrumbs">
-  <li><a href="/">Home</a></li>
-  <li class="current"><a href="/restaurants">Restaurants</a></li>
-</ul>
+<div class="content">
 
-<div>
-  <div class="row">
-    <%= simple_form_for @q, :url => restaurants_path, :html => { :method => :get } do |f| %>
-      <fieldset class="search_field large-12 large-centered columns">
-        <div class="row home_search">
+  <ul class="breadcrumbs">
+    <li><a href="/">Home</a></li>
+    <li class="current"><a href="/restaurants">Restaurants</a></li>
+  </ul>
+
+  <% flash.each do |name, msg| -%>
+    <div class="<%= name %>"><%= msg %></div>
+  <% end -%>
+
+  <div>
+    <div class="row">
+      <%= simple_form_for @q, :url => restaurants_path, :html => { :method => :get } do |f| %>
+        <!-- <fieldset class="search_field large-12 large-centered columns"> -->
+          <div class="row home_search">
+            <div class="small-3 large-3 columns">
+              <label for="restaurant_name" class="right inline">Restaurant name</label>
+            </div>
+            <div class="small-7 large-7 columns">
+              <%= f.text_field :name_cont, :class => 'text_field', :autofocus => true %>
+            </div>
+            <div class="small-2 large-2 columns"><%= f.button :submit, 'Search', class: "small button" %></div>
+          </div>
+          <div class="row home_search">
+            <div class="small-3 small-offset-3 columns search_option">or search by</div>
+          </div>
           <div class="small-3 large-3 columns">
-            <label for="restaurant_name" class="right inline">Restaurant name</label>
+            <label for="restaurant_name" class="right inline">Dietary restriction</label>
           </div>
-          <div class="small-7 large-7 columns">
-            <%= f.text_field :name_cont, :class => 'text_field', :autofocus => true %>
+          <div class="small-9 large-9 columns">
+            <div class="row">
+              <form>
+                <div class="small-3 large-2 columns diet_checkbox"><input type="checkbox" name="diet" value="vegan">Vegan<br></div>
+                <div class="small-4 large-3 columns diet_checkbox"><input type="checkbox" name="diet" value="vegetarian">Vegetarian<br></div>
+                <div class="small-4 large-3 columns diet_checkbox"><input type="checkbox" name="diet" value="gluten_free">Gluten-free<br></div>
+                <div class="small-1 large-4 columns diet_checkbox"></div>
+              </form>
+            </div>
           </div>
-          <div class="small-2 large-2 columns"><%= f.button :submit, 'Search', class: "small button" %></div>
-        </div>
-        <div class="row home_search">
-          <div class="small-3 small-offset-3 columns search_option">or search by</div>
-        </div>
-        <div class="small-3 large-3 columns">
-          <label for="restaurant_name" class="right inline">Dietary restriction</label>
-        </div>
-        <div class="small-9 large-9 columns">
-          <div class="row">
-            <form>
-              <div class="small-3 large-2 columns diet_checkbox"><input type="checkbox" name="diet" value="vegan">Vegan<br></div>
-              <div class="small-4 large-3 columns diet_checkbox"><input type="checkbox" name="diet" value="vegetarian">Vegetarian<br></div>
-              <div class="small-4 large-3 columns diet_checkbox"><input type="checkbox" name="diet" value="gluten_free">Gluten-free<br></div>
-              <div class="small-1 large-4 columns diet_checkbox"></div>
-            </form>
-          </div>
-        </div>
-      </fieldset>
-    <% end %>
-  </div>
-
-  <div class="row">
-    <div class="search_results">
-      <%= "#{pluralize(@restaurants.count, 'restaurant')} found" %>
+     <!--    </fieldset> -->
+      <% end %>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="large-12 columns">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Restaurant</th>
-            <th>Neighborhood</th>
-            <th>Vegan Friendly</th>
-            <th>Vegetarian Friendly</th>
-            <th>Gluten-Free Friendly</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @restaurants.each do |restaurant| %>
+    <div class="row">
+      <div class="search_results">
+        <%= "#{pluralize(@restaurants.count, 'restaurant')} found" %>
+      </div>
+    </div>
 
+    <div class="row">
+      <div class="large-12 columns">
+        <table class="table">
+          <thead>
             <tr>
-              <td><%= link_to "#{restaurant.name}", restaurant_path(restaurant) %></td>
-              <td><%= restaurant.neighborhood %></td>
-              <td><%= restaurant.vegan_rating %></td>
-              <td><%= restaurant.vegetarian_rating %></td>
-              <td><%= restaurant.gluten_free_rating %></td>
+              <th>Restaurant</th>
+              <th>Neighborhood</th>
+              <th>Vegan Friendly</th>
+              <th>Vegetarian Friendly</th>
+              <th>Gluten-Free Friendly</th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            <% @restaurants.each do |restaurant| %>
+
+              <tr>
+                <td><%= link_to "#{restaurant.name}", restaurant_path(restaurant) %></td>
+                <td><%= restaurant.neighborhood %></td>
+                <td><%= restaurant.vegan_rating %></td>
+                <td><%= restaurant.vegetarian_rating %></td>
+                <td><%= restaurant.gluten_free_rating %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
+
 
