@@ -42,39 +42,40 @@
   </div>
 </div>
 
+
+
 <div class="comments_field">
-    <div class="row">
-      <div class="search_results">
-        <%= "#{pluralize(@restaurants.count, 'restaurant')} found" %>
-      </div>
+  <div class="row">
+    <div class="search_results">
+      <%= "#{pluralize(@restaurants.count, 'restaurant')} found" %>
     </div>
+  </div>
 
-    <div class="row">
-      <div class="large-12 columns">
-        <table class="table">
-          <thead>
+  <div class="row">
+    <div class="large-12 columns">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Restaurant</th>
+            <th>Neighborhood</th>
+            <th>Vegan Friendly</th>
+            <th>Vegetarian Friendly</th>
+            <th>Gluten-Free Friendly</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @restaurants.each do |restaurant| %>
+
             <tr>
-              <th>Restaurant</th>
-              <th>Neighborhood</th>
-              <th>Vegan Friendly</th>
-              <th>Vegetarian Friendly</th>
-              <th>Gluten-Free Friendly</th>
+              <td><%= link_to "#{restaurant.name}", restaurant_path(restaurant) %></td>
+              <td><%= restaurant.neighborhood %></td>
+              <td><%= restaurant.vegan_rating %></td>
+              <td><%= restaurant.vegetarian_rating %></td>
+              <td><%= restaurant.gluten_free_rating %></td>
             </tr>
-          </thead>
-          <tbody>
-            <% @restaurants.each do |restaurant| %>
-
-              <tr>
-                <td><%= link_to "#{restaurant.name}", restaurant_path(restaurant) %></td>
-                <td><%= restaurant.neighborhood %></td>
-                <td><%= restaurant.vegan_rating %></td>
-                <td><%= restaurant.vegetarian_rating %></td>
-                <td><%= restaurant.gluten_free_rating %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

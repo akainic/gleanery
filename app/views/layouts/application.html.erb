@@ -5,65 +5,58 @@
 <!--[if IE 8 ]>    <html class="ie8" lang="en"> <![endif]-->
 <!--[if IE 9 ]>    <html class="ie9" lang="en"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
-  <head>
-  	<meta charset="utf-8" />
+<head>
+ <meta charset="utf-8" />
 
-  	<!-- Uncomment to make IE8 render like IE7 -->
-  	<!-- <meta http-equiv="X-UA-Compatible" content="IE=7" /> -->
+ <!-- Uncomment to make IE8 render like IE7 -->
+ <!-- <meta http-equiv="X-UA-Compatible" content="IE=7" /> -->
 
-  	<!-- Set the viewport width to device width for mobile -->
-  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <!-- Set the viewport width to device width for mobile -->
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  	<title><%= content_for?(:title) ? yield(:title) : "Gleanery" %></title>
+ <title><%= content_for?(:title) ? yield(:title) : "Gleanery" %></title>
 
-  	<%= stylesheet_link_tag    "application" %>
-  	<%= javascript_include_tag "vendor/custom.modernizr" %>
-    <%= csrf_meta_tags %>
-    <%= javascript_include_tag "application" %>
-    <%= yield :script %>
-  </head>
+ <%= stylesheet_link_tag    "application" %>
+ <%= javascript_include_tag "vendor/custom.modernizr" %>
+ <%= csrf_meta_tags %>
+ <%= javascript_include_tag "application" %>
+ <%= yield :script %>
+</head>
 
-  <body>
-    <div id="wrapper">
+<body>
+  <div id="wrapper">
 
-      <nav class="top-bar">
-        <ul class="title-area">
-          <li class="name">
-            <h1><a href="/">Gleanery</a></h1>
-          </li>
-          <li class="toggle-topbar menu-icon">
-            <a href="#"><span>Menu</span></a>
-          </li>
+    <nav class="top-bar">
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="/">Gleanery</a></h1>
+        </li>
+        <li class="toggle-topbar menu-icon">
+          <a href="#"><span>Menu</span></a>
+        </li>
+      </ul>
+      <section class="top-bar-section">
+        <ul class="right">
+          <% if user_signed_in? %>
+          <li class="current_user">Signed in as <%= current_user.username %></li>
+          <li class="authentication-link"><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
+          <% else %>
+          <li class="authentication-link"><%= link_to 'Sign up', new_user_registration_path %></li>
+          <li class="authentication-link"><%= link_to 'Sign in', new_user_session_path %></li>
+          <% end %>
         </ul>
-        <section class="top-bar-section">
-          <ul class="right">
-            <% if user_signed_in? %>
-              <li class="current_user">Signed in as <%= current_user.username %></li>
-              <li class="authentication-link"><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
-            <% else %>
-              <li class="authentication-link"><%= link_to 'Sign up', new_user_registration_path %></li>
-              <li class="authentication-link"><%= link_to 'Sign in', new_user_session_path %></li>
-            <% end %>
-          </ul>
-        </section>
-      </nav>
+      </section>
+    </nav>
 
-      <div>
+    <div>
 
-        <%= yield %>
-
-
-      </div>
+      <%= yield %>
 
       <div id="footer">
         <div class="small-2 large-1 columns"><a href="#">About us</a></div>
-        <div class="small-10 large-11 columns">About the diets
-          <ul class="diets_list">
-            <li><a href="#">Vegan</a></li>
-            <li><a href="#">Vegetarian</a></li>
-            <li><a href="#">Gluten-free</a></li>
-          </ul>
-        </div>
+        <div class="small-10 large-11 columns"><a href="#">About the diets</a></div>
+      </div>
+
     </div>
   </body>
-</html>
+  </html>
