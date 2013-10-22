@@ -69,9 +69,27 @@
             <tr>
               <td><%= link_to "#{restaurant.name}", restaurant_path(restaurant) %></td>
               <td><%= restaurant.neighborhood %></td>
-              <td><%= restaurant.vegan_rating %></td>
-              <td><%= restaurant.vegetarian_rating %></td>
-              <td><%= restaurant.gluten_free_rating %></td>
+              <td>
+                <% if restaurant.ratings.where(vegan: 0).count == 0 && restaurant.ratings.where(vegan: 1).count == 0 %>
+                  <%= "No ratings" %>
+                <% else %>
+                  <%= restaurant.vegan_rating %>
+                <% end %>
+              </td>
+              <td>
+                <% if restaurant.ratings.where(vegetarian: 0).count == 0 && restaurant.ratings.where(vegetarian: 1).count == 0 %>
+                  <%= "No ratings" %>
+                <% else %>
+                  <%= restaurant.vegetarian_rating %>
+                <% end %>
+              </td>
+              <td>
+                <% if restaurant.ratings.where(gluten_free: 0).count == 0 && restaurant.ratings.where(gluten_free: 1).count == 0 %>
+                  <%= "No ratings" %>
+                <% else %>
+                  <%= restaurant.gluten_free_rating %>
+                <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>
