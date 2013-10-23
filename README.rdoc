@@ -1,6 +1,8 @@
-Search restaurants by their friendliness to various dietary restrictions. Rate restaurants you've visited so other users know where to eat!
+Search restaurants by their friendliness to various dietary restrictions based on user ratings. Rate restaurants you've visited and post comments so other users know where to eat!
 
 Diets included are:
 - Vegan
 - Vegetarian
 - Gluten-free
+
+Visit us at: http://gleanery.herokuapp.com/
