@@ -14,7 +14,7 @@ nav {
 
 #wrapper {
   min-height: 100%;
-  height: 100%;
+  height: 100;
   position: relative;
   background-image: image-url(image_path('albion.jpg'));
   background-size: cover;
@@ -26,7 +26,7 @@ nav {
   background-color: #5D6A75;
   color: #E9E9E9;
   font-size: 0.75em;
-  height: 7em;
+  height: 6em;
   bottom: 0;
   padding: 30px 20px 20px 20px;
 

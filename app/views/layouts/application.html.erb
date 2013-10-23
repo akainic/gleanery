@@ -23,7 +23,7 @@
  <%= yield :script %>
 </head>
 
-<body>
+<body id="body">
   <div id="wrapper">
 
     <nav class="top-bar">
@@ -49,14 +49,14 @@
     </nav>
 
     <div>
-
       <%= yield %>
-
-      <div id="footer">
-        <div class="small-2 large-1 columns"><a href="#">About us</a></div>
-        <div class="small-10 large-11 columns"><a href="#">About the diets</a></div>
-      </div>
-
     </div>
-  </body>
-  </html>
+
+    <div id="footer">
+      <div class="small-2 large-1 columns"><a href="#">About us</a></div>
+      <div class="small-10 large-11 columns"><a href="#">About the diets</a></div>
+    </div>
+
+  </div>
+</body>
+</html>
