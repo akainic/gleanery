@@ -13,7 +13,7 @@ class Restaurant < ActiveRecord::Base
     dependent: :nullify
 
   def vegan_rating
-    total_rating = ratings.where(vegan: 0).count + ratings.where(vegan: 1).count
+    total_rating = ratings.where("vegan = ? OR vegan = ?", 0, 1).count
     if total_rating == 0
       "0%"
     else
@@ -23,7 +23,7 @@ class Restaurant < ActiveRecord::Base
   end
 
   def vegetarian_rating
-    total_rating = ratings.where(vegetarian: 0).count + ratings.where(vegetarian: 1).count
+    total_rating = ratings.where("vegetarian = ? OR vegetarian = ?", 0, 1).count
     if total_rating == 0
       "0%"
     else
@@ -33,7 +33,7 @@ class Restaurant < ActiveRecord::Base
   end
 
   def gluten_free_rating
-    total_rating = ratings.where(gluten_free: 0).count + ratings.where(gluten_free: 1).count
+    total_rating = ratings.where("gluten_free = ? OR gluten_free = ?", 0, 1).count
     if total_rating == 0
       "0%"
     else
@@ -43,7 +43,7 @@ class Restaurant < ActiveRecord::Base
   end
 
   def overall_rating
-    total_rating = ratings.where(overall: 0).count + ratings.where(overall: 1).count
+    total_rating = ratings.where("overall = ? OR overall = ?", 0, 1).count
     if total_rating == 0
       "0%"
     else
