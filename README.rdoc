@@ -4,5 +4,3 @@ Diets included are:
 - Vegan
 - Vegetarian
 - Gluten-free
-
-Visit us at: http://gleanery.herokuapp.com/
