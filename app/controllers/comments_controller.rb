@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :is_authenticated?, only: [:create]
   before_action :find_restaurant
 
   def index
@@ -7,16 +8,12 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @restaurant.comments.build(comment_params)
-    @comment.user_id = current_user.id
+
     if @comment.save
       redirect_to restaurant_path(@restaurant),
         notice: "Comment successfully posted"
-    elsif @comment.comment.length < 5
-      redirect_to restaurant_path(@restaurant),
-        notice: "Your comment was not posted. Comments must be at least 5 characters long."
     else
-      redirect_to restaurant_path(@restaurant),
-        notice: "Your comment was not posted."
+      render 'new'
     end
   end
 
@@ -24,17 +21,19 @@ class CommentsController < ApplicationController
     @comment = Comment.new
   end
 
-  def show
-  end
-
-
   private
+
+  def is_authenticated?
+    unless current_user
+      raise ActiveRecord::RecordNotFound
+    end
+  end
 
   def find_restaurant
     @restaurant = Restaurant.find(params[:restaurant_id])
   end
 
   def comment_params
-    params.require(:comment).permit(:comment)
+    params.require(:comment).permit(:comment).merge(user: current_user)
   end
 end

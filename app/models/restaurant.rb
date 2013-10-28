@@ -1,4 +1,5 @@
 class Restaurant < ActiveRecord::Base
+  include Rateable
 
   validates_presence_of :name
   validates_presence_of :street_address
@@ -12,43 +13,5 @@ class Restaurant < ActiveRecord::Base
     inverse_of: :restaurant,
     dependent: :nullify
 
-  def vegan_rating
-    total_rating = ratings.where("vegan = ? OR vegan = ?", 0, 1).count
-    if total_rating == 0
-      "0%"
-    else
-      score = ratings.where(vegan: 1).count / total_rating.to_f
-      "#{(score * 100).round(0)}%"
-    end
-  end
-
-  def vegetarian_rating
-    total_rating = ratings.where("vegetarian = ? OR vegetarian = ?", 0, 1).count
-    if total_rating == 0
-      "0%"
-    else
-      score = ratings.where(vegetarian: 1).count / total_rating.to_f
-      "#{(score * 100).round(0)}%"
-    end
-  end
-
-  def gluten_free_rating
-    total_rating = ratings.where("gluten_free = ? OR gluten_free = ?", 0, 1).count
-    if total_rating == 0
-      "0%"
-    else
-      score = ratings.where(gluten_free: 1).count / total_rating.to_f
-      "#{(score * 100).round(0)}%"
-    end
-  end
-
-  def overall_rating
-    total_rating = ratings.where("overall = ? OR overall = ?", 0, 1).count
-    if total_rating == 0
-      "0%"
-    else
-      score = ratings.where(overall: 1).count / total_rating.to_f
-      "#{(score * 100).round(0)}%"
-    end
-  end
+  rate :vegan, :vegetarian, :gluten_free, :overall
 end

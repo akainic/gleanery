@@ -48,7 +48,6 @@ feature 'user comments on a restaurant', %Q{
     visit restaurant_path(restaurant)
     fill_in 'comment_comment', with: 'Bug'
     click_button 'Post'
-
     expect(page).to have_content('Comments must be at least 5 characters long.')
     expect(Comment.count).to eql(previous_count)
   end

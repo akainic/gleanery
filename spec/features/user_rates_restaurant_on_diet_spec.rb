@@ -28,8 +28,8 @@ feature 'user rates restaurant on diet', %Q{
     sign_in_as(user)
 
     visit restaurant_path(restaurant)
+    expect(page).to have_content('No ratings')
     find(:css, ".vegan_yes").click
-
     expect(page).to have_content('100%')
     expect(restaurant.ratings.count).to eql(previous_count + 1)
   end
