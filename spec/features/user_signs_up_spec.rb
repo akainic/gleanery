@@ -49,39 +49,4 @@ feature 'user signs up', %Q{
     expect(page).to have_content("can't be blank")
     expect(User.count).to eql(previous_count)
   end
-
-  scenario 'user enters an email or username that is already registered' do
-    user1 = FactoryGirl.create(:user)
-    user2 = FactoryGirl.build(:user)
-    previous_count = User.count
-
-    visit root_path
-    click_on 'Sign up'
-    fill_in 'user_username', with: user1.username
-    fill_in 'user_email', with: user1.email
-    fill_in 'user_password', with: user1.password, :match => :prefer_exact
-    fill_in 'user_password_confirmation', with: user1.password_confirmation, :match => :prefer_exact
-
-    click_button 'Sign up'
-
-    expect(page).to have_content('has already been taken')
-    expect(User.count).to eql(previous_count)
-  end
-
-  scenario 'user password and confirmation do not match' do
-    user = FactoryGirl.build(:user)
-    previous_count = User.count
-
-    visit root_path
-    click_on 'Sign up'
-    fill_in 'user_username', with: user.username
-    fill_in 'user_email', with: user.email
-    fill_in 'user_password', with: user.password, :match => :prefer_exact
-    fill_in 'user_password_confirmation', with: 'Greens100', :match => :prefer_exact
-    click_button 'Sign up'
-
-    expect(page).to have_content("doesn't match")
-    expect(User.count).to eql(previous_count)
-  end
-
 end
